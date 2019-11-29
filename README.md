@@ -22,6 +22,8 @@ I use [VS Code](https://code.visualstudio.com/) as my editor.
 
 [Google Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool/)
 
+[RealFaviconGenerator](https://realfavicongenerator.net/)
+
 [W3C Markup Validation Service](https://validator.w3.org/)
 
 ## Frequently used libraries and packages
