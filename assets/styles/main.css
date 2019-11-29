@@ -21,14 +21,14 @@ a {
   display: inline-block;
 }
 
-.heading {
+.banner {
   display: inline-block;
   margin: 1em 0 0;
   line-height: 1;
   color: rgba(255, 191, 31, .8);
 }
 
-.heading__text {
+.banner__text {
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
@@ -38,16 +38,16 @@ a {
   animation: typing 6s steps(11, end), blink .5s step-end 12;
 }
 
-.heading__text--hide {
+.banner__text--sm-hide {
   display: none;
 }
 
 @media (min-width: 420px) {
-  .heading__text--show {
+  .banner__text--lg-show {
     display: inline-block;
   }
 
-  .heading__text {
+  .banner__text {
     animation: typing 10s steps(19, end), blink .5s step-end 20;
   }
 }
