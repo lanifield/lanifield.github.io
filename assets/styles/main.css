@@ -1,0 +1,114 @@
+html {
+  background-color: rgba(31, 31, 31, 1);
+  box-sizing: border-box;
+  color: rgba(255, 191, 31, 1);
+  font-family: monospace;
+  font-size: 16px;
+  line-height: 0;
+}
+
+body {
+  width: 90vw;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+p {
+  line-height: 1.5;
+}
+
+a {
+  display: inline-block;
+}
+
+.heading {
+  display: inline-block;
+  margin: 1em 0 0;
+  line-height: 1;
+  color: rgba(255, 191, 31, .8);
+}
+
+.heading__text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  letter-spacing: 2px;
+  box-sizing: border-box;
+  border-right: 3px groove transparent;
+  animation: typing 6s steps(11, end), blink .5s step-end 12;
+}
+
+.heading__text--hide {
+  display: none;
+}
+
+@media (min-width: 420px) {
+  .heading__text--show {
+    display: inline-block;
+  }
+
+  .heading__text {
+    animation: typing 10s steps(19, end), blink .5s step-end 20;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+
+  from,
+  to {
+    border-color: transparent;
+  }
+
+  50% {
+    border-color: rgba(255, 191, 31, .6);
+  }
+}
+
+.link--text:link,
+.link--text:visited {
+  text-decoration: underline dotted;
+  color: rgba(191, 255, 31, .8);
+}
+
+.link--text:hover,
+.link--text:focus,
+.link--text:active {
+  text-decoration: underline solid;
+  color: rgba(191, 255, 31, 1);
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-content: stretch;
+}
+
+.footer__nav {
+  align-self: center;
+}
+
+.button--icon:link,
+.button--icon:visited {
+  color: rgba(191, 255, 31, .6);
+}
+
+.button--icon:hover,
+.button--icon:focus,
+.button--icon:active {
+  color: rgba(191, 255, 31, .8);
+}
+
+.icon--svg {
+  width: 36px;
+  height: 36px;
+}
