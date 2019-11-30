@@ -4,9 +4,13 @@ I use [VS Code](https://code.visualstudio.com/) as my editor.
 
 ## Recommended reading
 
+[BEM](http://getbem.com/)
+
 [CSS-Tricks](https://css-tricks.com/)
 
 [MDN Web Docs](https://developer.mozilla.org/en-US/)
+
+[Mozilla Web Security](https://infosec.mozilla.org/guidelines/web_security)
 
 [Schema.org](https://schema.org/)
 
@@ -18,11 +22,17 @@ I use [VS Code](https://code.visualstudio.com/) as my editor.
 
 [Can I use](https://caniuse.com/)
 
-[The Front-End Checklist](https://frontendchecklist.io/)
+[Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/sharing/)
+
+[Google Search Console](https://search.google.com/search-console)
 
 [Google Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool/)
 
-[RealFaviconGenerator](https://realfavicongenerator.net/)
+[LinkedIn Post Inspector](https://www.linkedin.com/post-inspector)
+
+[The Front-End Checklist](https://frontendchecklist.io/)
+
+[Twitter Card Validator](https://cards-dev.twitter.com/validator)
 
 [W3C Markup Validation Service](https://validator.w3.org/)
 
@@ -31,6 +41,8 @@ I use [VS Code](https://code.visualstudio.com/) as my editor.
 [Bootstrap](https://getbootstrap.com/docs/)
 
 [ESlint](https://eslint.org/)
+
+[FontAwesome](https://fontawesome.com/)
 
 [jQuery](https://api.jquery.com/)
 
