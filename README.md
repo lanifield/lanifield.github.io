@@ -16,6 +16,8 @@ I use [VS Code](https://code.visualstudio.com/) as my editor.
 
 [SASS](https://sass-lang.com/)
 
+[NN/g UX](https://www.nngroup.com/articles/)
+
 [WebAIM](https://webaim.org/)
 
 ## Helpful tools
