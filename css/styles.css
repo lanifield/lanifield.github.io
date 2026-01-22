@@ -6,24 +6,25 @@
 /* === CSS Custom Properties === */
 :root {
   /* Color Palette - Aurora-inspired */
-  --void-black: #0D011C;
+  --void-black: #050013;
   --deep-indigo: #160059;
-  --neon-green: #4EFD54;
-  --electric-cyan: #41FDFE;
+  --digital-lavender: #8D59D2;
+  --electric-cyan: #41F6F8;
   --hot-pink: #FE41D7;
   --ghost-white: #F8F8FF;
+  --digital-lavender: #4EFD54;
   
   /* Semantic Colors */
   --bg-primary: var(--void-black);
   --bg-secondary: var(--deep-indigo);
   --text-primary: var(--ghost-white);
   --text-muted: rgba(248, 248, 255, 0.7);
-  --accent-primary: var(--neon-green);
+  --accent-primary: var(--digital-lavender);
   --accent-secondary: var(--electric-cyan);
   --accent-tertiary: var(--hot-pink);
   
   /* Typography */
-  --font-heading: 'Titillium Web', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Changa', system-ui, -apple-system, sans-serif;
   --font-body: 'Exo 2', system-ui, -apple-system, sans-serif;
   --font-weight-heading: 600;
   --font-weight-body: 400;
@@ -38,8 +39,8 @@
   --spacing-3xl: 6rem;
   
   /* Layout */
-  --max-width-content: 1200px;
-  --max-width-text: 65ch;
+  --max-width-content: 960px;
+  --max-width-text: 80ch;
   --border-radius: 0.5rem;
   --border-radius-lg: 1rem;
   
@@ -52,7 +53,7 @@
   --shadow-sm: 0 2px 4px rgba(22, 0, 89, 0.3);
   --shadow-md: 0 4px 8px rgba(22, 0, 89, 0.4);
   --shadow-lg: 0 8px 16px rgba(22, 0, 89, 0.5);
-  --shadow-glow-green: 0 0 20px rgba(78, 253, 84, 0.3);
+  --shadow-glow-lavender: 0 0 20px rgba(141, 89, 210, 0.3);
   --shadow-glow-cyan: 0 0 20px rgba(65, 253, 254, 0.3);
   --shadow-glow-pink: 0 0 20px rgba(254, 65, 215, 0.3);
 }
@@ -74,7 +75,7 @@ html {
 body {
   font-family: var(--font-body);
   font-weight: var(--font-weight-body);
-  line-height: 1.6;
+  line-height: 1.5;
   color: var(--text-primary);
   background-color: var(--bg-primary);
   min-height: 100vh;
@@ -86,13 +87,13 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: var(--font-weight-heading);
-  line-height: 1.2;
+  line-height: 1.25;
   margin-bottom: var(--spacing-md);
 }
 
 h1 {
   font-size: clamp(2rem, 5vw, 3.5rem);
-  background: linear-gradient(135deg, var(--neon-green), var(--electric-cyan));
+  background: linear-gradient(135deg, var(--digital-lavender), var(--electric-cyan));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -101,12 +102,12 @@ h1 {
 
 h2 {
   font-size: clamp(1.75rem, 4vw, 2.5rem);
-  color: var(--neon-green);
+  color: var(--electric-cyan);
 }
 
 h3 {
   font-size: clamp(1.5rem, 3vw, 2rem);
-  color: var(--electric-cyan);
+  color: var(--digital-lavender);
 }
 
 h4 {
@@ -127,12 +128,12 @@ a {
 }
 
 a:hover, a:focus {
-  color: var(--neon-green);
+  color: var(--digital-lavender);
   outline: none;
 }
 
 a:focus-visible {
-  outline: 2px solid var(--neon-green);
+  outline: 2px solid var(--digital-lavender);
   outline-offset: 4px;
   border-radius: 2px;
 }
@@ -144,7 +145,7 @@ a:not(.button):not(.nav-link)::after {
   bottom: -2px;
   left: 0;
   width: 0;
-  height: 2px;
+  height: 1px;
   background: linear-gradient(90deg, var(--electric-cyan), var(--hot-pink));
   transition: width var(--transition-base);
 }
@@ -161,7 +162,7 @@ a:not(.button):not(.nav-link):focus::after {
   left: var(--spacing-md);
   z-index: 10000;
   padding: var(--spacing-sm) var(--spacing-md);
-  background: var(--neon-green);
+  background: var(--digital-lavender);
   color: var(--void-black);
   font-weight: bold;
   border-radius: var(--border-radius);
@@ -229,12 +230,12 @@ a:not(.button):not(.nav-link):focus::after {
 
 .nav-link:hover,
 .nav-link:focus {
-  color: var(--neon-green);
+  color: var(--digital-lavender);
   background: rgba(78, 253, 84, 0.1);
 }
 
 .nav-link[aria-current="page"] {
-  color: var(--neon-green);
+  color: var(--digital-lavender);
   background: rgba(78, 253, 84, 0.15);
 }
 
@@ -242,8 +243,8 @@ a:not(.button):not(.nav-link):focus::after {
 .menu-toggle {
   display: none;
   background: none;
-  border: 2px solid var(--neon-green);
-  color: var(--neon-green);
+  border: 2px solid var(--digital-lavender);
+  color: var(--digital-lavender);
   padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: var(--border-radius);
   cursor: pointer;
@@ -254,10 +255,10 @@ a:not(.button):not(.nav-link):focus::after {
 
 .menu-toggle:hover,
 .menu-toggle:focus {
-  background: var(--neon-green);
+  background: var(--digital-lavender);
   color: var(--void-black);
   outline: none;
-  box-shadow: var(--shadow-glow-green);
+  box-shadow: var(--shado--digital-lavender);
 }
 
 /* === Main Content === */
@@ -367,16 +368,16 @@ main {
 }
 
 .button-primary {
-  background: var(--neon-green);
+  background: var(--digital-lavender);
   color: var(--void-black);
-  border-color: var(--neon-green);
+  border-color: var(--digital-lavender);
 }
 
 .button-primary:hover,
 .button-primary:focus {
   background: transparent;
-  color: var(--neon-green);
-  box-shadow: var(--shadow-glow-green);
+  color: var(--digital-lavender);
+  box-shadow: var(--shado--digital-lavender);
   transform: translateY(-2px);
 }
 
@@ -419,7 +420,7 @@ main {
 }
 
 .article-card:focus-within {
-  outline: 2px solid var(--neon-green);
+  outline: 2px solid var(--digital-lavender);
   outline-offset: 4px;
 }
 
@@ -450,7 +451,7 @@ main {
   display: inline-block;
   padding: 0.25rem 0.75rem;
   background: rgba(78, 253, 84, 0.15);
-  color: var(--neon-green);
+  color: var(--digital-lavender);
   border-radius: 2rem;
   font-size: 0.75rem;
   font-weight: 500;
@@ -535,7 +536,7 @@ main {
 
 .search-box input:focus {
   outline: none;
-  border-color: var(--neon-green);
+  border-color: var(--digital-lavender);
   box-shadow: 0 0 0 3px rgba(78, 253, 84, 0.2);
 }
 
@@ -575,8 +576,8 @@ main {
 
 .filter-btn.active {
   background: rgba(78, 253, 84, 0.15);
-  border-color: var(--neon-green);
-  color: var(--neon-green);
+  border-color: var(--digital-lavender);
+  color: var(--digital-lavender);
 }
 
 /* === About Page === */
@@ -610,8 +611,8 @@ main {
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background: var(--neon-green);
-  box-shadow: var(--shadow-glow-green);
+  background: var(--digital-lavender);
+  box-shadow: var(--shado--digital-lavender);
   border: 2px solid var(--void-black);
 }
 
@@ -709,7 +710,7 @@ main {
 .post-content code {
   font-family: 'Courier New', monospace;
   font-size: 0.875rem;
-  color: var(--neon-green);
+  color: var(--digital-lavender);
 }
 
 .post-content ul,
@@ -723,7 +724,7 @@ main {
 }
 
 .post-content blockquote {
-  border-left: 4px solid var(--neon-green);
+  border-left: 4px solid var(--digital-lavender);
   padding-left: var(--spacing-md);
   margin: var(--spacing-lg) 0;
   font-style: italic;
@@ -775,7 +776,7 @@ main {
 .footer-section h3 {
   font-size: 1.25rem;
   margin-bottom: var(--spacing-md);
-  color: var(--neon-green);
+  color: var(--digital-lavender);
 }
 
 .social-links {
@@ -844,7 +845,7 @@ main {
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: var(--neon-green);
+  border-color: var(--digital-lavender);
   box-shadow: 0 0 0 3px rgba(78, 253, 84, 0.2);
 }
 
@@ -879,8 +880,8 @@ main {
 
 .form-status.success {
   background: rgba(78, 253, 84, 0.15);
-  border: 1px solid var(--neon-green);
-  color: var(--neon-green);
+  border: 1px solid var(--digital-lavender);
+  color: var(--digital-lavender);
 }
 
 .form-status.error {
@@ -1058,7 +1059,7 @@ main {
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, var(--neon-green), var(--electric-cyan), var(--hot-pink));
+  background: linear-gradient(135deg, var(--digital-lavender), var(--electric-cyan), var(--hot-pink));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1066,7 +1067,7 @@ main {
 
 /* === Focus Styles (Enhanced Accessibility) === */
 *:focus-visible {
-  outline: 2px solid var(--neon-green);
+  outline: 2px solid var(--digital-lavender);
   outline-offset: 3px;
 }
 
@@ -1075,7 +1076,7 @@ a:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid var(--neon-green);
+  outline: 2px solid var(--digital-lavender);
   outline-offset: 2px;
 }
 
