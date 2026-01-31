@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore thoughts, guides, and resources on UX, AI ethics, accessibility, and inclusive design.">
+    
+    <title>Journal - Lani</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Navigation -->
+    <nav class="main-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="index.html" class="logo" aria-label="Lani - Home">
+                <span class="logo-text" data-text="LANI">LANI</span>
+            </a>
+            
+            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="journal.html" class="active" aria-current="page">Journal</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="scanlines" aria-hidden="true"></div>
+            <div class="container">
+                <h1 class="page-title glitch" data-text="Journal">
+                    <span class="glitch-text">Journal</span>
+                </h1>
+                <p class="page-subtitle">Thoughts, guides, and resources on building equitable technology.</p>
+            </div>
+        </section>
+
+        <!-- Journal Controls -->
+        <section class="journal-controls">
+            <div class="container">
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <label for="journal-search" class="sr-only">Search journal entries</label>
+                    <div class="search-wrapper">
+                        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                        <input 
+                            type="search" 
+                            id="journal-search" 
+                            class="search-input" 
+                            placeholder="Search articles by title, content, or topic..."
+                            aria-describedby="search-help"
+                        >
+                        <button type="button" class="search-clear" aria-label="Clear search" hidden>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18"/>
+                                <line x1="6" y1="6" x2="18" y2="18"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p id="search-help" class="sr-only">Start typing to filter journal entries in real-time</p>
+                </div>
+
+                <!-- Filters and Sort -->
+                <div class="filters-bar" role="group" aria-label="Filter and sort options">
+                    <!-- Type Filter -->
+                    <div class="filter-group">
+                        <label for="type-filter">Type</label>
+                        <select id="type-filter" class="filter-select">
+                            <option value="">All Types</option>
+                            <option value="thought">Thought</option>
+                            <option value="reflection">Reflection</option>
+                            <option value="idea">Idea</option>
+                            <option value="guide">Guide</option>
+                            <option value="resource">Resource</option>
+                            <option value="knowledge">Knowledge</option>
+                            <option value="psychology">Psychology</option>
+                        </select>
+                    </div>
+
+                    <!-- Topic Filter -->
+                    <div class="filter-group">
+                        <label for="topic-filter">Topic</label>
+                        <select id="topic-filter" class="filter-select">
+                            <option value="">All Topics</option>
+                            <option value="ux">UX Design</option>
+                            <option value="ai">AI Ethics</option>
+                            <option value="accessibility">Accessibility</option>
+                            <option value="diversity">Diversity</option>
+                            <option value="inclusion">Inclusion</option>
+                            <option value="design">Design Systems</option>
+                            <option value="education">Education</option>
+                            <option value="research">Research</option>
+                            <option value="government">Government</option>
+                        </select>
+                    </div>
+
+                    <!-- Sort -->
+                    <div class="filter-group">
+                        <label for="sort-select">Sort By</label>
+                        <select id="sort-select" class="filter-select">
+                            <option value="date-desc">Newest First</option>
+                            <option value="date-asc">Oldest First</option>
+                            <option value="title-asc">Title (A-Z)</option>
+                            <option value="title-desc">Title (Z-A)</option>
+                        </select>
+                    </div>
+
+                    <!-- Clear Filters -->
+                    <button type="button" id="clear-filters" class="btn btn-tertiary">
+                        <span>Clear Filters</span>
+                    </button>
+                </div>
+
+                <!-- Results Count -->
+                <div class="results-info" role="status" aria-live="polite">
+                    <p id="results-count">Showing <strong>12</strong> articles</p>
+                </div>
+
+                <!-- Active Filters -->
+                <div class="active-filters" id="active-filters" hidden>
+                    <span class="active-filters-label">Active filters:</span>
+                    <div class="active-filters-list" role="list"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Journal Grid -->
+        <section class="journal-listing">
+            <div class="container">
+                <div class="journal-grid" id="journal-grid">
+                    <!-- Article cards will be dynamically populated -->
+                    <!-- Sample articles for demonstration -->
+                    
+                    <article class="journal-card" data-type="reflection" data-topic="ai" data-date="2025-01-28" data-title="Building AI Systems That Belong to Everyone">
+                        <div class="card-image">
+                            <img src="assets/journal-1.jpg" alt="" loading="lazy">
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <a href="journal.html?type=reflection" class="pill pill-reflection">Reflection</a>
+                                <a href="journal.html?topic=ai" class="pill pill-ai">AI Ethics</a>
+                            </div>
+                            <h2 class="card-title">
+                                <a href="journal/ai-systems-for-everyone.html">Building AI Systems That Belong to Everyone</a>
+                            </h2>
+                            <p class="card-excerpt">
+                                Exploring how indigenous frameworks offer better paradigms for understanding 
+                                AI relationships than Western hierarchical models. What if we approached AI 
+                                development through the lens of whakapapa and kaitiakitanga?
+                            </p>
+                            <div class="card-footer">
+                                <time datetime="2025-01-28">Jan 28, 2025</time>
+                                <span class="read-time">7 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="journal-card" data-type="guide" data-topic="accessibility" data-date="2025-01-25" data-title="WCAG 3.0: What UX Designers Need to Know">
+                        <div class="card-image">
+                            <img src="assets/journal-2.jpg" alt="" loading="lazy">
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <a href="journal.html?type=guide" class="pill pill-guide">Guide</a>
+                                <a href="journal.html?topic=accessibility" class="pill pill-accessibility">Accessibility</a>
+                            </div>
+                            <h2 class="card-title">
+                                <a href="journal/wcag-3-guide.html">WCAG 3.0: What UX Designers Need to Know</a>
+                            </h2>
+                            <p class="card-excerpt">
+                                A practical guide to the upcoming accessibility standard and how to prepare 
+                                your design practice for the transition. Understanding the shift from conformance 
+                                levels to scoring systems.
+                            </p>
+                            <div class="card-footer">
+                                <time datetime="2025-01-25">Jan 25, 2025</time>
+                                <span class="read-time">10 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="journal-card" data-type="resource" data-topic="ux" data-date="2025-01-22" data-title="Essential Tools for Ethical AI Implementation">
+                        <div class="card-image">
+                            <img src="assets/journal-3.jpg" alt="" loading="lazy">
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <a href="journal.html?type=resource" class="pill pill-resource">Resource</a>
+                                <a href="journal.html?topic=ux" class="pill pill-ux">UX Design</a>
+                            </div>
+                            <h2 class="card-title">
+                                <a href="journal/ethical-ai-tools.html">Essential Tools for Ethical AI Implementation</a>
+                            </h2>
+                            <p class="card-excerpt">
+                                Curated resources, frameworks, and tools for teams committed to building 
+                                responsible AI systems. From bias testing to explainability frameworks.
+                            </p>
+                            <div class="card-footer">
+                                <time datetime="2025-01-22">Jan 22, 2025</time>
+                                <span class="read-time">5 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="journal-card" data-type="thought" data-topic="diversity" data-date="2025-01-20" data-title="Tokenism vs. True Equity in Tech">
+                        <div class="card-image">
+                            <img src="assets/journal-4.jpg" alt="" loading="lazy">
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <a href="journal.html?type=thought" class="pill pill-thought">Thought</a>
+                                <a href="journal.html?topic=diversity" class="pill pill-diversity">Diversity</a>
+                            </div>
+                            <h2 class="card-title">
+                                <a href="journal/tokenism-vs-equity.html">Tokenism vs. True Equity in Tech</a>
+                            </h2>
+                            <p class="card-excerpt">
+                                Examining the difference between performative inclusion and genuine power 
+                                redistribution in technology organizations. What does real equity look like?
+                            </p>
+                            <div class="card-footer">
+                                <time datetime="2025-01-20">Jan 20, 2025</time>
+                                <span class="read-time">6 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="journal-card" data-type="guide" data-topic="research" data-date="2025-01-18" data-title="User Research in Government Services">
+                        <div class="card-image">
+                            <img src="assets/journal-5.jpg" alt="" loading="lazy">
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <a href="journal.html?type=guide" class="pill pill-guide">Guide</a>
+                                <a href="journal.html?topic=research" class="pill pill-research">Research</a>
+                            </div>
+                            <h2 class="card-title">
+                                <a href="journal/government-user-research.html">User Research in Government Services</a>
+                            </h2>
+                            <p class="card-excerpt">
+                                Navigating the unique challenges of conducting user research in the public sector, 
+                                from privacy concerns to accessibility requirements.
+                            </p>
+                            <div class="card-footer">
+                                <time datetime="2025-01-18">Jan 18, 2025</time>
+                                <span class="read-time">9 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="journal-card" data-type="knowledge" data-topic="design" data-date="2025-01-15" data-title="Information Architecture for Complex Systems">
+                        <div class="card-image">
+                            <img src="assets/journal-6.jpg" alt="" loading="lazy">
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <a href="journal.html?type=knowledge" class="pill pill-knowledge">Knowledge</a>
+                                <a href="journal.html?topic=design" class="pill pill-design">Design Systems</a>
+                            </div>
+                            <h2 class="card-title">
+                                <a href="journal/ia-complex-systems.html">Information Architecture for Complex Systems</a>
+                            </h2>
+                            <p class="card-excerpt">
+                                Strategies for organizing and structuring large-scale digital ecosystems 
+                                where users need to navigate hundreds of interconnected services.
+                            </p>
+                            <div class="card-footer">
+                                <time datetime="2025-01-15">Jan 15, 2025</time>
+                                <span class="read-time">11 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="journal-card" data-type="psychology" data-topic="education" data-date="2025-01-12" data-title="Cognitive Load and Learning Design">
+                        <div class="card-image">
+                            <img src="assets/journal-7.jpg" alt="" loading="lazy">
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <a href="journal.html?type=psychology" class="pill pill-psychology">Psychology</a>
+                                <a href="journal.html?topic=education" class="pill pill-education">Education</a>
+                            </div>
+                            <h2 class="card-title">
+                                <a href="journal/cognitive-load-learning.html">Cognitive Load and Learning Design</a>
+                            </h2>
+                            <p class="card-excerpt">
+                                Applying cognitive psychology principles to educational technology design. 
+                                How can we optimize for understanding without overwhelming learners?
+                            </p>
+                            <div class="card-footer">
+                                <time datetime="2025-01-12">Jan 12, 2025</time>
+                                <span class="read-time">8 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="journal-card" data-type="idea" data-topic="ai" data-date="2025-01-10" data-title="Conversational AI with Cultural Sensitivity">
+                        <div class="card-image">
+                            <img src="assets/journal-8.jpg" alt="" loading="lazy">
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <a href="journal.html?type=idea" class="pill pill-idea">Idea</a>
+                                <a href="journal.html?topic=ai" class="pill pill-ai">AI Ethics</a>
+                            </div>
+                            <h2 class="card-title">
+                                <a href="journal/cultural-conversational-ai.html">Conversational AI with Cultural Sensitivity</a>
+                            </h2>
+                            <p class="card-excerpt">
+                                Designing chatbots and voice interfaces that respect cultural context and 
+                                linguistic diversity. Moving beyond one-size-fits-all conversation design.
+                            </p>
+                            <div class="card-footer">
+                                <time datetime="2025-01-10">Jan 10, 2025</time>
+                                <span class="read-time">7 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="journal-card" data-type="reflection" data-topic="inclusion" data-date="2025-01-08" data-title="Centering Marginalized Voices in UX">
+                        <div class="card-image">
+                            <img src="assets/journal-9.jpg" alt="" loading="lazy">
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <a href="journal.html?type=reflection" class="pill pill-reflection">Reflection</a>
+                                <a href="journal.html?topic=inclusion" class="pill pill-inclusion">Inclusion</a>
+                            </div>
+                            <h2 class="card-title">
+                                <a href="journal/centering-marginalized-voices.html">Centering Marginalized Voices in UX</a>
+                            </h2>
+                            <p class="card-excerpt">
+                                Why user research must prioritize those most affected by design decisions. 
+                                Moving from tokenism to genuine co-design partnerships.
+                            </p>
+                            <div class="card-footer">
+                                <time datetime="2025-01-08">Jan 8, 2025</time>
+                                <span class="read-time">6 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="journal-card" data-type="resource" data-topic="accessibility" data-date="2025-01-05" data-title="Screen Reader Testing Checklist">
+                        <div class="card-image">
+                            <img src="assets/journal-10.jpg" alt="" loading="lazy">
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <a href="journal.html?type=resource" class="pill pill-resource">Resource</a>
+                                <a href="journal.html?topic=accessibility" class="pill pill-accessibility">Accessibility</a>
+                            </div>
+                            <h2 class="card-title">
+                                <a href="journal/screen-reader-checklist.html">Screen Reader Testing Checklist</a>
+                            </h2>
+                            <p class="card-excerpt">
+                                A comprehensive guide to testing your interfaces with NVDA, JAWS, and VoiceOver. 
+                                Essential checks every designer and developer should know.
+                            </p>
+                            <div class="card-footer">
+                                <time datetime="2025-01-05">Jan 5, 2025</time>
+                                <span class="read-time">4 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="journal-card" data-type="guide" data-topic="government" data-date="2025-01-03" data-title="Designing for Digital Government Services">
+                        <div class="card-image">
+                            <img src="assets/journal-11.jpg" alt="" loading="lazy">
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <a href="journal.html?type=guide" class="pill pill-guide">Guide</a>
+                                <a href="journal.html?topic=government" class="pill pill-government">Government</a>
+                            </div>
+                            <h2 class="card-title">
+                                <a href="journal/digital-government-design.html">Designing for Digital Government Services</a>
+                            </h2>
+                            <p class="card-excerpt">
+                                Best practices for creating accessible, inclusive, and user-friendly government 
+                                digital services that work for everyone.
+                            </p>
+                            <div class="card-footer">
+                                <time datetime="2025-01-03">Jan 3, 2025</time>
+                                <span class="read-time">12 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="journal-card" data-type="thought" data-topic="ux" data-date="2025-01-01" data-title="The Ethics of Dark Patterns">
+                        <div class="card-image">
+                            <img src="assets/journal-12.jpg" alt="" loading="lazy">
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <a href="journal.html?type=thought" class="pill pill-thought">Thought</a>
+                                <a href="journal.html?topic=ux" class="pill pill-ux">UX Design</a>
+                            </div>
+                            <h2 class="card-title">
+                                <a href="journal/ethics-dark-patterns.html">The Ethics of Dark Patterns</a>
+                            </h2>
+                            <p class="card-excerpt">
+                                Examining manipulative design practices and why user respect should be 
+                                non-negotiable. Building trust through transparent, honest interfaces.
+                            </p>
+                            <div class="card-footer">
+                                <time datetime="2025-01-01">Jan 1, 2025</time>
+                                <span class="read-time">5 min read</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- No Results Message -->
+                <div class="no-results" id="no-results" hidden>
+                    <svg class="no-results-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="m21 21-4.35-4.35"/>
+                    </svg>
+                    <h2>No articles found</h2>
+                    <p>Try adjusting your filters or search terms.</p>
+                    <button type="button" id="reset-search" class="btn btn-primary">Reset Search</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">Lani</h3>
+                    <p>Systems thinker championing equity through ethical AI and inclusive design.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="journal.html">Journal</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Connect</h3>
+                    <ul class="social-links">
+                        <li>
+                            <a href="https://linkedin.com/in/lanifield" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                                <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/lanifield" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+                                <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Lani. All rights reserved. <a href="terms.html">Terms of Use, including Privacy</a>.</p>
+                <p class="footer-note">Built with accessibility, ethics, and equity at the core.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/journal.js"></script>
+</body>
+</html>
