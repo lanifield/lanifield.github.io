@@ -639,15 +639,21 @@ textarea:focus-visible {
 .brain-path {
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
-    animation: draw-brain 3s ease-in-out infinite;
+    animation: glitch-photo 3s infinite;
 }
 
-@keyframes draw-brain {
-    0%, 100% {
-        stroke-dashoffset: 1000;
+@keyframes glitch-photo {
+    0%, 90%, 100% {
+        transform: translate(0);
+        opacity: 0;
     }
-    50% {
-        stroke-dashoffset: 0;
+    91%, 93% {
+        transform: translate(-2px, 1px);
+        opacity: 0.8;
+    }
+    92%, 94% {
+        transform: translate(2px, -1px);
+        opacity: 0.8;
     }
 }
 
