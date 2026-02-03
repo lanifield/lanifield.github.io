@@ -906,7 +906,7 @@ textarea:focus-visible {
 @keyframes glitch-photo {
     0%, 90%, 100% {
         transform: translate(0);
-        opacity: 0;
+        opacity: 1;
     }
     91%, 93% {
         transform: translate(-2px, 1px);
