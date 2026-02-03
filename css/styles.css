@@ -639,21 +639,15 @@ textarea:focus-visible {
 .brain-path {
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
-    animation: glitch-photo 3s infinite;
+    animation: draw-brain 3s ease-in-out infinite;
 }
 
-@keyframes glitch-photo {
-    0%, 90%, 100% {
-        transform: translate(0);
-        opacity: 0;
+@keyframes draw-brain {
+    0%, 100% {
+        stroke-dashoffset: 1000;
     }
-    91%, 93% {
-        transform: translate(-2px, 1px);
-        opacity: 0.8;
-    }
-    92%, 94% {
-        transform: translate(2px, -1px);
-        opacity: 0.8;
+    50% {
+        stroke-dashoffset: 0;
     }
 }
 
@@ -906,18 +900,21 @@ textarea:focus-visible {
 .brain-visual {
     width: 100%;
     max-width: 400px;
-    animation: float 6s ease-in-out infinite;
+    animation: glitch-photo 3s infinite;
 }
 
-@keyframes float {
-    0%, 100% {
-        transform: translateX(0);
+@keyframes glitch-photo {
+    0%, 90%, 100% {
+        transform: translate(0);
+        opacity: 0;
     }
-    25% {
-        transform: translateX(-10px);
+    91%, 93% {
+        transform: translate(-2px, 1px);
+        opacity: 0.8;
     }
-    75% {
-        transform: translateX(10px);
+    92%, 94% {
+        transform: translate(2px, -1px);
+        opacity: 0.8;
     }
 }
 
