@@ -575,29 +575,6 @@ textarea:focus-visible {
     }
 }
 
-.hologram-frame::before,
-.hologram-frame::after {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--color-lavender);
-}
-
-.hologram-frame::before {
-    top: -2px;
-    left: -2px;
-    border-right: none;
-    border-bottom: none;
-}
-
-.hologram-frame::after {
-    bottom: -2px;
-    right: -2px;
-    border-left: none;
-    border-top: none;
-}
-
 /* Neural Network Animation */
 .node {
     animation: node-pulse 2s ease-in-out infinite;
