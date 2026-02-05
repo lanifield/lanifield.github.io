@@ -78,11 +78,11 @@ function initContactForm() {
         window.showLoading(submitBtn);
         
         try {
-            // Add reCAPTCHA token if enabled
-            // const recaptchaToken = await getRecaptchaToken();
-            // formData.recaptcha = recaptchaToken;
+            // Add reCAPTCHA token
+            const recaptchaToken = await getRecaptchaToken();
+            formData.recaptcha = recaptchaToken;
             
-            // Submit form (replace with your endpoint)
+            // Submit form
             const response = await submitForm(formData);
             
             if (response.success) {
@@ -200,50 +200,19 @@ function validateField(field) {
     return isValid;
 }
 
-// Get reCAPTCHA token (uncomment when ready to use)
-/*
+// Get reCAPTCHA token
 async function getRecaptchaToken() {
     return new Promise((resolve, reject) => {
         grecaptcha.ready(() => {
-            grecaptcha.execute('YOUR_SITE_KEY', { action: 'submit' })
+            grecaptcha.execute('6LeURGAsAAAAAKmoxIc4AbrvX-hWpWp74risbkX6', { action: 'submit' })
                 .then(token => resolve(token))
                 .catch(error => reject(error));
         });
     });
 }
-*/
 
 // Submit form to backend
 async function submitForm(data) {
-    // REPLACE THIS WITH YOUR ACTUAL ENDPOINT
-    // Example implementations:
-    
-    // Option 1: FormSpree
-    /*
-    const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    });
-    return response.json();
-    */
-    
-    // Option 2: Your own backend
-    /*
-    const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    });
-    return response.json();
-    */
-    
-    // Option 3: Netlify Forms
-
     const formData = new FormData();
     Object.keys(data).forEach(key => {
         formData.append(key, data[key]);
@@ -260,17 +229,6 @@ async function submitForm(data) {
     } else {
         throw new Error('Submission failed');
     }
-
-    
-    // DEMO MODE - Remove this and use one of the options above
-    /*
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            console.log('Form data:', data);
-            resolve({ success: true });
-        }, 2000);
-    });
-    */
 }
 
 // Announce to screen readers
