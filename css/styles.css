@@ -10,8 +10,8 @@
    - Smokey White: #f8f8ff
    
    Typography:
-   - Display: Orbitron
-   - Body: Electrolize
+   - Display: Oxanium
+   - Body: Exo
    
    Standards: WCAG 2.2 AA, HTML5, CSS3
    =================================== */
@@ -35,8 +35,8 @@
     --color-accent: var(--color-green);
     
     /* Typography */
-    --font-display: 'Orbitron', sans-serif;
-    --font-body: 'Electrolize', sans-serif;
+    --font-display: 'Oxanium', sans-serif;
+    --font-body: 'Exo', sans-serif;
     
     /* Font Sizes */
     --text-xs: 0.75rem;
@@ -721,10 +721,16 @@ textarea:focus-visible {
     transition: all var(--transition-base);
 }
 
-.pill-reflection {
-    background: rgba(72, 246, 248, 0.1);
-    border-color: var(--color-cyan);
-    color: var(--color-cyan);
+.pill-commentary {
+    background: rgba(78, 253, 84, 0.1);
+    border-color: var(--color-green);
+    color: var(--color-green);
+}
+
+.pill-course {
+    background: rgba(200, 89, 210, 0.1);
+    border-color: var(--color-lavender);
+    color: var(--color-lavender);
 }
 
 .pill-guide {
@@ -733,45 +739,34 @@ textarea:focus-visible {
     color: var(--color-lavender);
 }
 
+.pill-idea {
+    background: rgba(200, 89, 210, 0.1);
+    border-color: var(--color-cyan);
+    color: var(--color-cyan);
+}
+
+.pill-reflection {
+    background: rgba(72, 246, 248, 0.1);
+    border-color: var(--color-cyan);
+    color: var(--color-cyan);
+}
+
 .pill-resource {
     background: rgba(78, 253, 84, 0.1);
     border-color: var(--color-green);
     color: var(--color-green);
 }
 
-.pill-thought {
-    background: rgba(72, 246, 248, 0.1);
-    border-color: var(--color-cyan);
-    color: var(--color-cyan);
-}
 
-.pill-idea {
-    background: rgba(200, 89, 210, 0.1);
-    border-color: var(--color-lavender);
-    color: var(--color-lavender);
-}
-
-.pill-knowledge {
-    background: rgba(78, 253, 84, 0.1);
-    border-color: var(--color-green);
-    color: var(--color-green);
-}
-
-.pill-psychology {
-    background: rgba(72, 246, 248, 0.1);
-    border-color: var(--color-cyan);
-    color: var(--color-cyan);
-}
-
-.pill-ai,
-.pill-ux,
 .pill-accessibility,
-.pill-diversity,
-.pill-inclusion,
+.pill-ai,
 .pill-design,
-.pill-education,
+.pill-diversity,
+.pill-government,
+.pill-inclusion,
+.pill-psychology,
 .pill-research,
-.pill-government {
+.pill-ux {
     background: rgba(248, 248, 255, 0.05);
     border-color: rgba(248, 248, 255, 0.3);
     color: var(--color-white);
@@ -874,6 +869,7 @@ textarea:focus-visible {
     align-items: center;
 }
 
+/* TODO: modify max width to calculate width of frame and subtract padding*2 so it doesn't push wider than a mobile screen */
 .brain-visual {
     width: 100%;
     max-width: 400px;
