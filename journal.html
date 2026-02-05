@@ -3,15 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore thoughts, guides, and resources on UX, AI ethics, accessibility, and inclusive design.">
+    <meta name="description" content="Explore Lani's journal of thoughts on UX, AI ethics, accessibility, and inclusive design.">
     
     <title>Journal - Lani</title>
     
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700;&family=Exo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Google tag script -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GMG51T4XDC"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GMG51T4XDC');
+    </script>
+
+    <!-- Clarity script -->
+    <script async type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "vb10n4ezgq");
+    </script>
+
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -20,7 +40,7 @@
     <nav class="main-nav" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <a href="index.html" class="logo" aria-label="Lani - Home">
-                <span class="logo-text" data-text="LANI">LANI</span>
+                <img src="/assets/logo-header.png" alt="Lani Raukawa Field - UX Architect - Human-centered design" width="240px" />
             </a>
             
             <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
@@ -84,13 +104,12 @@
                         <label for="type-filter">Type</label>
                         <select id="type-filter" class="filter-select">
                             <option value="">All Types</option>
-                            <option value="thought">Thought</option>
-                            <option value="reflection">Reflection</option>
-                            <option value="idea">Idea</option>
+                            <option value="commentary">Commentary</option>
+                            <option value="course">Course</option>
                             <option value="guide">Guide</option>
+                            <option value="idea">Idea</option>
+                            <option value="reflection">Reflection</option>
                             <option value="resource">Resource</option>
-                            <option value="knowledge">Knowledge</option>
-                            <option value="psychology">Psychology</option>
                         </select>
                     </div>
 
@@ -99,15 +118,15 @@
                         <label for="topic-filter">Topic</label>
                         <select id="topic-filter" class="filter-select">
                             <option value="">All Topics</option>
-                            <option value="ux">UX Design</option>
-                            <option value="ai">AI Ethics</option>
                             <option value="accessibility">Accessibility</option>
-                            <option value="diversity">Diversity</option>
-                            <option value="inclusion">Inclusion</option>
+                            <option value="ai">AI</option>
                             <option value="design">Design Systems</option>
-                            <option value="education">Education</option>
-                            <option value="research">Research</option>
+                            <option value="diversity">Diversity</option>
                             <option value="government">Government</option>
+                            <option value="inclusion">Inclusion</option>
+                            <option value="psychology">Psychology</option>
+                            <option value="research">Research</option>
+                            <option value="ux">UX</option>
                         </select>
                     </div>
 
@@ -150,7 +169,7 @@
                     
                     <article class="journal-card" data-type="reflection" data-topic="ai" data-date="2025-01-28" data-title="Building AI Systems That Belong to Everyone">
                         <div class="card-image">
-                            <img src="assets/journal-1.jpg" alt="" loading="lazy">
+                            <img src="assets/journal-monitor.png" alt="" loading="lazy">
                             <div class="card-overlay"></div>
                         </div>
                         <div class="card-content">
@@ -175,7 +194,7 @@
 
                     <article class="journal-card" data-type="guide" data-topic="accessibility" data-date="2025-01-25" data-title="WCAG 3.0: What UX Designers Need to Know">
                         <div class="card-image">
-                            <img src="assets/journal-2.jpg" alt="" loading="lazy">
+                            <img src="assets/journal-guide.png" alt="" loading="lazy">
                             <div class="card-overlay"></div>
                         </div>
                         <div class="card-content">
@@ -200,7 +219,7 @@
 
                     <article class="journal-card" data-type="resource" data-topic="ux" data-date="2025-01-22" data-title="Essential Tools for Ethical AI Implementation">
                         <div class="card-image">
-                            <img src="assets/journal-3.jpg" alt="" loading="lazy">
+                            <img src="assets/journal-guide.png" alt="" loading="lazy">
                             <div class="card-overlay"></div>
                         </div>
                         <div class="card-content">
@@ -222,14 +241,14 @@
                         </div>
                     </article>
 
-                    <article class="journal-card" data-type="thought" data-topic="diversity" data-date="2025-01-20" data-title="Tokenism vs. True Equity in Tech">
+                    <article class="journal-card" data-type="commentary" data-topic="diversity" data-date="2025-01-20" data-title="Tokenism vs. True Equity in Tech">
                         <div class="card-image">
-                            <img src="assets/journal-4.jpg" alt="" loading="lazy">
+                            <img src="assets/journal-teach.png" alt="" loading="lazy">
                             <div class="card-overlay"></div>
                         </div>
                         <div class="card-content">
                             <div class="card-meta">
-                                <a href="journal.html?type=thought" class="pill pill-thought">Thought</a>
+                                <a href="journal.html?type=commentary" class="pill pill-commentary">Commentary</a>
                                 <a href="journal.html?topic=diversity" class="pill pill-diversity">Diversity</a>
                             </div>
                             <h2 class="card-title">
@@ -248,7 +267,7 @@
 
                     <article class="journal-card" data-type="guide" data-topic="research" data-date="2025-01-18" data-title="User Research in Government Services">
                         <div class="card-image">
-                            <img src="assets/journal-5.jpg" alt="" loading="lazy">
+                            <img src="assets/journal-research.png" alt="" loading="lazy">
                             <div class="card-overlay"></div>
                         </div>
                         <div class="card-content">
@@ -270,14 +289,14 @@
                         </div>
                     </article>
 
-                    <article class="journal-card" data-type="knowledge" data-topic="design" data-date="2025-01-15" data-title="Information Architecture for Complex Systems">
+                    <article class="journal-card" data-type="course" data-topic="design" data-date="2025-01-15" data-title="Information Architecture for Complex Systems">
                         <div class="card-image">
-                            <img src="assets/journal-6.jpg" alt="" loading="lazy">
+                            <img src="assets/journal-monitor.png" alt="" loading="lazy">
                             <div class="card-overlay"></div>
                         </div>
                         <div class="card-content">
                             <div class="card-meta">
-                                <a href="journal.html?type=knowledge" class="pill pill-knowledge">Knowledge</a>
+                                <a href="journal.html?type=course" class="pill pill-course">Course</a>
                                 <a href="journal.html?topic=design" class="pill pill-design">Design Systems</a>
                             </div>
                             <h2 class="card-title">
@@ -294,15 +313,15 @@
                         </div>
                     </article>
 
-                    <article class="journal-card" data-type="psychology" data-topic="education" data-date="2025-01-12" data-title="Cognitive Load and Learning Design">
+                    <article class="journal-card" data-type="resource" data-topic="psychology" data-date="2025-01-12" data-title="Cognitive Load and Learning Design">
                         <div class="card-image">
-                            <img src="assets/journal-7.jpg" alt="" loading="lazy">
+                            <img src="assets/journal-research.png" alt="" loading="lazy">
                             <div class="card-overlay"></div>
                         </div>
                         <div class="card-content">
                             <div class="card-meta">
-                                <a href="journal.html?type=psychology" class="pill pill-psychology">Psychology</a>
-                                <a href="journal.html?topic=education" class="pill pill-education">Education</a>
+                                <a href="journal.html?type=resource" class="pill pill-resource">Resource</a>
+                                <a href="journal.html?topic=psychology" class="pill pill-psychology">Psychology</a>
                             </div>
                             <h2 class="card-title">
                                 <a href="journal/cognitive-load-learning.html">Cognitive Load and Learning Design</a>
@@ -320,7 +339,7 @@
 
                     <article class="journal-card" data-type="idea" data-topic="ai" data-date="2025-01-10" data-title="Conversational AI with Cultural Sensitivity">
                         <div class="card-image">
-                            <img src="assets/journal-8.jpg" alt="" loading="lazy">
+                            <img src="assets/journal-research.png" alt="" loading="lazy">
                             <div class="card-overlay"></div>
                         </div>
                         <div class="card-content">
@@ -344,7 +363,7 @@
 
                     <article class="journal-card" data-type="reflection" data-topic="inclusion" data-date="2025-01-08" data-title="Centering Marginalized Voices in UX">
                         <div class="card-image">
-                            <img src="assets/journal-9.jpg" alt="" loading="lazy">
+                            <img src="assets/journal-monitor.png" alt="" loading="lazy">
                             <div class="card-overlay"></div>
                         </div>
                         <div class="card-content">
@@ -368,7 +387,7 @@
 
                     <article class="journal-card" data-type="resource" data-topic="accessibility" data-date="2025-01-05" data-title="Screen Reader Testing Checklist">
                         <div class="card-image">
-                            <img src="assets/journal-10.jpg" alt="" loading="lazy">
+                            <img src="assets/journal-teach.png" alt="" loading="lazy">
                             <div class="card-overlay"></div>
                         </div>
                         <div class="card-content">
@@ -392,7 +411,7 @@
 
                     <article class="journal-card" data-type="guide" data-topic="government" data-date="2025-01-03" data-title="Designing for Digital Government Services">
                         <div class="card-image">
-                            <img src="assets/journal-11.jpg" alt="" loading="lazy">
+                            <img src="assets/journal-guide.png" alt="" loading="lazy">
                             <div class="card-overlay"></div>
                         </div>
                         <div class="card-content">
@@ -414,14 +433,14 @@
                         </div>
                     </article>
 
-                    <article class="journal-card" data-type="thought" data-topic="ux" data-date="2025-01-01" data-title="The Ethics of Dark Patterns">
+                    <article class="journal-card" data-type="commentary" data-topic="ux" data-date="2025-01-01" data-title="The Ethics of Dark Patterns">
                         <div class="card-image">
-                            <img src="assets/journal-12.jpg" alt="" loading="lazy">
+                            <img src="assets/journal-research.png" alt="" loading="lazy">
                             <div class="card-overlay"></div>
                         </div>
                         <div class="card-content">
                             <div class="card-meta">
-                                <a href="journal.html?type=thought" class="pill pill-thought">Thought</a>
+                                <a href="journal.html?type=commentary" class="pill pill-commentary">Commentary</a>
                                 <a href="journal.html?topic=ux" class="pill pill-ux">UX Design</a>
                             </div>
                             <h2 class="card-title">
