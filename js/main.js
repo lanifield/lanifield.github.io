@@ -139,31 +139,27 @@ function closeModal(modal) {
 function acceptAllCookies() {
     setCookie('cookie_consent', 'all', 365);
     setCookie('analytics_cookies', 'true', 365);
-    setCookie('marketing_cookies', 'true', 365);
     
     // Initialize analytics here
-    // initAnalytics();
+    initAnalytics();
     console.log('All cookies accepted');
 }
 
 function declineAllCookies() {
     setCookie('cookie_consent', 'essential', 365);
     setCookie('analytics_cookies', 'false', 365);
-    setCookie('marketing_cookies', 'false', 365);
     console.log('Non-essential cookies declined');
 }
 
 function savePreferences() {
     const analyticsConsent = document.getElementById('analytics-cookies').checked;
-    const marketingConsent = document.getElementById('marketing-cookies').checked;
     
     setCookie('cookie_consent', 'custom', 365);
     setCookie('analytics_cookies', analyticsConsent ? 'true' : 'false', 365);
-    setCookie('marketing_cookies', marketingConsent ? 'true' : 'false', 365);
     
     // Initialize analytics if consented
     if (analyticsConsent) {
-        // initAnalytics();
+        initAnalytics();
     }
     
     console.log('Cookie preferences saved');
