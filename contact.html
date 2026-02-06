@@ -140,14 +140,14 @@
                                 <li>I typically respond within 24-48 hours</li>
                                 <li>All inquiries are treated with confidentiality</li>
                                 <li>I'm particularly interested in projects that center equity and inclusion</li>
-                                <li>Available for consulting, workshops, and training</li>
+                                <li>Available for consulting, collaboration, workshops, and training</li>
                             </ul>
                         </div>
                     </div>
 
                     <!-- Contact Form -->
                     <div class="contact-form-wrapper">
-                        <form class="contact-form" id="contact-form" novalidate>
+                        <form class="contact-form" id="contact-form" netlify-honeypot="website" data-netlify="true" data-netlify-recaptcha="true" novalidate>
                             <h2>Send a Message</h2>
                             
                             <!-- Honeypot field (hidden from real users) -->
@@ -207,9 +207,10 @@
                                     aria-describedby="subject-error"
                                 >
                                     <option value="">Select a subject...</option>
-                                    <option value="consulting">UX Consulting</option>
-                                    <option value="ai-ethics">Ethical AI Project</option>
-                                    <option value="workshop">Workshop or Training</option>
+                                    <option value="ux">UX Consulting</option>
+                                    <option value="ai">AI Consulting</option>
+                                    <option value="training">Training</option>
+                                    <option value="facilitation">Workshop</option>
                                     <option value="collaboration">Collaboration</option>
                                     <option value="other">Other</option>
                                 </select>
@@ -253,12 +254,7 @@
                             </div>
 
                             <!-- reCAPTCHA badge will appear here when enabled -->
-                            <div class="recaptcha-info">
-                                <p>This site is protected by reCAPTCHA and the Google 
-                                    <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and 
-                                    <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> apply.
-                                </p>
-                            </div>
+                            <div data-netlify-recaptcha="true"></div>
 
                             <button type="submit" class="btn btn-primary btn-large" id="submit-btn">
                                 <span class="btn-text">Send Message</span>
