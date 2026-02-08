@@ -76,14 +76,10 @@ function initContactForm() {
         
         // Show loading state
         window.showLoading(submitBtn);
-        
+
         try {
-            // Add reCAPTCHA token
-            const recaptchaToken = await getRecaptchaToken();
-            formData.recaptcha = recaptchaToken;
-            
-            // Submit form
-            const response = await submitForm(formData);
+            // Submit form - let Netlify handle it
+            const response = await submitForm();
             
             if (response.success) {
                 // Show success message
@@ -200,28 +196,14 @@ function validateField(field) {
     return isValid;
 }
 
-// Get reCAPTCHA token
-async function getRecaptchaToken() {
-    return new Promise((resolve, reject) => {
-        grecaptcha.ready(() => {
-            grecaptcha.execute('6LeURGAsAAAAAKmoxIc4AbrvX-hWpWp74risbkX6', { action: 'submit' })
-                .then(token => resolve(token))
-                .catch(error => reject(error));
-        });
-    });
-}
-
-// Submit form to backend
-async function submitForm(data) {
-    const formData = new FormData();
-    Object.keys(data).forEach(key => {
-        formData.append(key, data[key]);
-    });
+// Submit form to Netlify
+async function submitForm() {
+    const form = document.getElementById('contact-form');
+    const formData = new FormData(form);
     
     const response = await fetch('/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString()
+        body: formData
     });
     
     if (response.ok) {
