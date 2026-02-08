@@ -93,6 +93,11 @@
     --z-tooltip: 1070;
 }
 
+/* Hidden fix */
+[hidden] {
+    display: none !important;
+}
+
 /* ===================================
    RESET & BASE STYLES
    =================================== */
