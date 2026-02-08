@@ -1,0 +1,16 @@
+[[headers]]
+  for = "/*"
+  [headers.values]
+    access-control-allow-origin = "*"
+    Content-Security-Policy = "
+      default-src 'self';
+      font-src 'self' fonts.gstatic.com;
+      style-src 'self' fonts.googleapis.com;
+      script-src 'self' www.google-analytics.com www.googletagmanager.com ajax.googleapis.com www.clarity.ms;
+      img-src 'self' data:;
+      plugin-types application/pdf;
+      frame-ancestors 'none';
+      manifest-src 'none';
+      worker-src 'none';
+      prefetch-src 'none'
+    "
