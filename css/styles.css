@@ -580,59 +580,6 @@ textarea:focus-visible {
     }
 }
 
-/* Neural Network Animation */
-.node {
-    animation: node-pulse 2s ease-in-out infinite;
-}
-
-.node-1 { animation-delay: 0s; }
-.node-2 { animation-delay: 0.2s; }
-.node-3 { animation-delay: 0.4s; }
-.node-4 { animation-delay: 0.6s; }
-.node-5 { animation-delay: 0.8s; }
-.node-6 { animation-delay: 1s; }
-.node-7 { animation-delay: 1.2s; }
-.node-8 { animation-delay: 1.4s; }
-
-@keyframes node-pulse {
-    0%, 100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    50% {
-        transform: scale(1.67);
-        opacity: 0.6;
-    }
-}
-
-.connection {
-    animation: connection-flow 2s linear infinite;
-}
-
-@keyframes connection-flow {
-    0%, 100% {
-        stroke-opacity: 0.3;
-    }
-    50% {
-        stroke-opacity: 0.8;
-    }
-}
-
-.brain-path {
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
-    animation: draw-brain 3s ease-in-out infinite;
-}
-
-@keyframes draw-brain {
-    0%, 100% {
-        stroke-dashoffset: 1000;
-    }
-    50% {
-        stroke-dashoffset: 0;
-    }
-}
-
 /* ===================================
    BUTTONS
    =================================== */
@@ -875,9 +822,9 @@ textarea:focus-visible {
 }
 
 /* TODO: modify max width to calculate width of frame and subtract padding*2 so it doesn't push wider than a mobile screen */
-.brain-visual {
+.hologram-visual {
     width: 100%;
-    max-width: 400px;
+    max-width: 360px;
     animation: glitch-photo 3s infinite;
 }
 
