@@ -178,7 +178,6 @@ p {
 
 a {
     color: var(--color-primary);
-    text-decoration: none;
     transition: color var(--transition-base);
 }
 
@@ -1606,7 +1605,6 @@ textarea:focus-visible {
 
 .email-link {
     color: var(--color-cyan);
-    text-decoration: underline;
     cursor: pointer;
 }
 
@@ -1754,7 +1752,6 @@ textarea:focus-visible {
 
 .checkbox-label a {
     color: var(--color-cyan);
-    text-decoration: underline;
 }
 
 .recaptcha-info {
@@ -1765,7 +1762,6 @@ textarea:focus-visible {
 
 .recaptcha-info a {
     color: var(--color-cyan);
-    text-decoration: underline;
 }
 
 .btn-loading {
@@ -2029,7 +2025,6 @@ textarea:focus-visible {
 
 .cookie-links a {
     color: var(--color-cyan);
-    text-decoration: underline;
 }
 
 /* Cookie Settings Modal */
