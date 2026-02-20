@@ -280,6 +280,7 @@ textarea:focus-visible {
     max-width: var(--container-max);
     margin: 0 auto;
     padding: var(--space-4) var(--container-padding);
+    padding-bottom: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
