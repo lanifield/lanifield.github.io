@@ -622,16 +622,18 @@ textarea:focus-visible {
 }
 
 .btn-secondary {
-    background: transparent;
-    color: var(--color-cyan);
-    border-color: var(--color-cyan);
+    background: var(--color-lavender);
+    color: var(--color-void);
+    border-color: var(--color-lavender);
+    box-shadow: var(--shadow-lavender);
 }
 
 .btn-secondary:hover,
 .btn-secondary:focus {
-    background: rgba(72, 246, 248, 0.1);
-    border-color: var(--color-lavender);
-    color: var(--color-lavender);
+    background: var(--color-cyan);
+    border-color: var(--color-cyan);
+    box-shadow: var(--shadow-cyan);
+    color: var(--color-void);
     transform: translateY(-2px);
 }
 
