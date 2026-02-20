@@ -614,9 +614,9 @@ textarea:focus-visible {
 
 .btn-primary:hover,
 .btn-primary:focus {
-    background: var(--color-lavender);
-    border-color: var(--color-lavender);
-    box-shadow: var(--shadow-lavender);
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-accent);
     color: var(--color-void);
     transform: translateY(-2px);
 }
@@ -630,9 +630,9 @@ textarea:focus-visible {
 
 .btn-secondary:hover,
 .btn-secondary:focus {
-    background: var(--color-cyan);
-    border-color: var(--color-cyan);
-    box-shadow: var(--shadow-cyan);
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-accent);
     color: var(--color-void);
     transform: translateY(-2px);
 }
@@ -878,7 +878,7 @@ textarea:focus-visible {
 
 .view-all:hover,
 .view-all:focus {
-    color: var(--color-cyan);
+    color: var(--color-void);
     transform: translateX(5px);
 }
 
