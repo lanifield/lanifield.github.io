@@ -53,129 +53,127 @@ function initNavigation() {
 // COOKIE CONSENT MANAGEMENT
 // ===================================
 function initCookieConsent() {
-    const banner = document.getElementById('cookie-banner');
-    const modal = document.getElementById('cookie-modal');
-    const acceptBtn = document.getElementById('cookie-accept');
-    const declineBtn = document.getElementById('cookie-decline');
-    const settingsBtn = document.getElementById('cookie-settings');
-    const modalClose = document.querySelector('.modal-close');
-    const savePrefsBtn = document.getElementById('save-preferences');
-    const acceptAllModal = document.getElementById('modal-accept-all');
-    
-    // Check if user has already made a choice
-    const cookieConsent = getCookie('cookie_consent');
-    
-    if (!cookieConsent && banner) {
-        // Show banner after a short delay
-        setTimeout(() => {
-            banner.classList.add('active');
-        }, 1000);
-    }
-    
-    // Accept all cookies
-    if (acceptBtn) {
-        acceptBtn.addEventListener('click', function() {
-            acceptAllCookies();
-            banner.classList.remove('active');
-        });
-    }
-    
-    // Decline cookies
-    if (declineBtn) {
-        declineBtn.addEventListener('click', function() {
-            declineAllCookies();
-            banner.classList.remove('active');
-        });
-    }
-    
-    // Open settings modal
-    if (settingsBtn && modal) {
-        settingsBtn.addEventListener('click', function() {
-            modal.removeAttribute('hidden');
-            document.body.style.overflow = 'hidden';
-        });
-    }
-    
-    // Close modal
-    if (modalClose && modal) {
-        modalClose.addEventListener('click', function() {
-            closeModal(modal);
-        });
-    }
-    
-    // Save preferences
-    if (savePrefsBtn && modal) {
-        savePrefsBtn.addEventListener('click', function() {
-            savePreferences();
-            closeModal(modal);
-            banner.classList.remove('active');
-        });
-    }
-    
-    // Accept all from modal
-    if (acceptAllModal && modal) {
-        acceptAllModal.addEventListener('click', function() {
-            acceptAllCookies();
-            closeModal(modal);
-            banner.classList.remove('active');
-        });
-    }
-    
-    // Close modal on backdrop click
-    if (modal) {
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                closeModal(modal);
-            }
-        });
-    }
-}
-
-function closeModal(modal) {
-    modal.setAttribute('hidden', '');
-    document.body.style.overflow = '';
-}
-
-function acceptAllCookies() {
-    setCookie('cookie_consent', 'all', 365);
-    setCookie('analytics_cookies', 'true', 365);
-    
-    // Initialize analytics here
-    initAnalytics();
-    console.log('All cookies accepted');
-}
-
-function declineAllCookies() {
-    setCookie('cookie_consent', 'essential', 365);
-    setCookie('analytics_cookies', 'false', 365);
-    console.log('Non-essential cookies declined');
-}
-
-function savePreferences() {
-    const analyticsConsent = document.getElementById('analytics-cookies').checked;
-    
-    setCookie('cookie_consent', 'custom', 365);
-    setCookie('analytics_cookies', analyticsConsent ? 'true' : 'false', 365);
-    
-    // Initialize analytics if consented
-    if (analyticsConsent) {
-        initAnalytics();
-    }
-    
-    console.log('Cookie preferences saved');
-}
-
-function setCookie(name, value, days) {
-    const expires = new Date();
-    expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
-    document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/;SameSite=Strict`;
-}
-
-function getCookie(name) {
+  
+  const COOKIE_NAME = 'cookie_consent';
+  const COOKIE_DURATION = 365; // days
+  
+  // Your tracking IDs
+  const GTAG_ID = 'G-GMG51T4XDC'; // Replace with your Google Analytics ID
+  const CLARITY_ID = 'vb10n4ezgq'; // Replace with your Clarity project ID
+  
+  // Get cookie value
+  function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2) return parts.pop().split(';').shift();
     return null;
+  }
+  
+  // Set cookie
+  function setCookie(name, value, days) {
+    const expires = new Date();
+    expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+    document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/;SameSite=Strict`;
+  }
+  
+  // Initialize Google Analytics
+  function initGoogleAnalytics() {
+    // Create gtag script
+    const gtagScript = document.createElement('script');
+    gtagScript.async = true;
+    gtagScript.src = `https://www.googletagmanager.com/gtag/js?id=${GTAG_ID}`;
+    document.head.appendChild(gtagScript);
+    
+    // Initialize gtag
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', GTAG_ID, {
+      'anonymize_ip': true, // Privacy-friendly
+      'cookie_flags': 'SameSite=None;Secure'
+    });
+    
+    console.log('Google Analytics initialized');
+  }
+  
+  // Initialize Microsoft Clarity
+  function initClarity() {
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", CLARITY_ID);
+    
+    console.log('Microsoft Clarity initialized');
+  }
+  
+  // Handle consent choice
+  function handleConsent(choice) {
+    setCookie(COOKIE_NAME, choice, COOKIE_DURATION);
+    hideBanner();
+    
+    if (choice === 'essential-analytics') {
+      initGoogleAnalytics();
+      initClarity();
+    } else if (choice === 'essential-only') {
+      console.log('Only essential cookies accepted');
+      // Essential cookies only - no analytics
+    } else if (choice === 'none') {
+      console.log('No cookies accepted');
+      // User rejected all cookies
+      // You might want to handle this case differently
+    }
+  }
+  
+  // Show banner
+  function showBanner() {
+    const banner = document.getElementById('cookie-consent-banner');
+    if (banner) {
+      banner.classList.add('show');
+    }
+  }
+  
+  // Hide banner
+  function hideBanner() {
+    const banner = document.getElementById('cookie-consent-banner');
+    if (banner) {
+      banner.classList.remove('show');
+    }
+  }
+  
+  // Initialize on page load
+  function init() {
+    const consent = getCookie(COOKIE_NAME);
+    
+    if (consent === 'essential-analytics') {
+      // User previously accepted analytics
+      initGoogleAnalytics();
+      initClarity();
+    } else if (!consent) {
+      // No consent recorded - show banner
+      showBanner();
+    }
+    
+    // Add event listeners to buttons
+    document.getElementById('cookie-essential-only')?.addEventListener('click', function() {
+      handleConsent('essential-only');
+    });
+    
+    document.getElementById('cookie-essential-analytics')?.addEventListener('click', function() {
+      handleConsent('essential-analytics');
+    });
+    
+    document.getElementById('cookie-none')?.addEventListener('click', function() {
+      handleConsent('none');
+    });
+  }
+  
+  // Run when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 }
 
 // ===================================
