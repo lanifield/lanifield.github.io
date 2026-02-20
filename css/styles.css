@@ -824,11 +824,14 @@ textarea:focus-visible {
     align-items: center;
 }
 
-/* TODO: modify max width to calculate width of frame and subtract padding*2 so it doesn't push wider than a mobile screen */
 .hologram-visual {
     width: 100%;
     max-width: 360px;
     animation: glitch-photo 3s infinite;
+}
+
+.no-glitch {
+    animation: none;
 }
 
 @keyframes glitch-photo {
