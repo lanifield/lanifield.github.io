@@ -876,18 +876,11 @@ textarea:focus-visible {
     font-family: var(--font-display);
     font-weight: 600;
     color: var(--color-void);
-    transition: all var(--transition-base);
 }
 
 .view-all:hover,
 .view-all:focus {
     color: var(--color-void);
-    transform: translateX(5px);
-}
-
-.view-all .icon {
-    width: 20px;
-    height: 20px;
 }
 
 .journal-grid {
