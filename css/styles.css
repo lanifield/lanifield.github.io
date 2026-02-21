@@ -1972,7 +1972,7 @@ textarea:focus-visible {
    =================================== */
 .cookie-banner {
     position: fixed;
-    bottom: 0;
+    bottom: 200px;
     left: 0;
     right: 0;
     background: rgba(8, 0, 22, 0.98);
