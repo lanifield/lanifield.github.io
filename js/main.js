@@ -3,6 +3,7 @@
 // ===================================
 
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('Initialization');
     // Initialize all components
     initNavigation();
     initCookieConsent();
@@ -109,7 +110,9 @@ function initCookieConsent() {
   
   // Handle consent choice
   function handleConsent(choice) {
-    setCookie(COOKIE_NAME, choice, COOKIE_DURATION);
+    if (choice !== 'none') {
+      setCookie(COOKIE_NAME, choice, COOKIE_DURATION);
+    }
     hideBanner();
     
     if (choice === 'essential-analytics') {
@@ -152,20 +155,20 @@ function initCookieConsent() {
     } else if (!consent) {
       // No consent recorded - show banner
       showBanner();
+      
+      // Add event listeners to buttons
+      document.getElementById('cookie-essential-only')?.addEventListener('click', function() {
+        handleConsent('essential-only');
+      });
+        
+      document.getElementById('cookie-essential-analytics')?.addEventListener('click', function() {
+        handleConsent('essential-analytics');
+      });
+      
+      document.getElementById('cookie-none')?.addEventListener('click', function() {
+        handleConsent('none');
+      });
     }
-    
-    // Add event listeners to buttons
-    document.getElementById('cookie-essential-only')?.addEventListener('click', function() {
-      handleConsent('essential-only');
-    });
-    
-    document.getElementById('cookie-essential-analytics')?.addEventListener('click', function() {
-      handleConsent('essential-analytics');
-    });
-    
-    document.getElementById('cookie-none')?.addEventListener('click', function() {
-      handleConsent('none');
-    });
   }
   
   // Run when DOM is ready
