@@ -368,6 +368,7 @@ textarea:focus-visible {
     padding: var(--space-2) var(--space-3);
     position: relative;
     transition: color var(--transition-base);
+    text-decoration: none;
 }
 
 .nav-menu a::after {
