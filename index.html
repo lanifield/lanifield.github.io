@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- ═══════════════════════════════════════════════
+       PRIMARY META — SEO, AEO & GEO
+  ════════════════════════════════════════════════ -->
+  <title>Lani Raukawa Field — UX Architect & Trustworthy AI Consultant</title>
+  <meta name="description"
+        content="Lani Raukawa Field is a Wellington-based UX Architect and consultant specialising in human-centred design, trustworthy AI, accessibility, and government digital services." />
+  <meta name="author" content="Lani Raukawa Field" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://lani.nz/" />
+
+  <!-- Geo meta for local discovery -->
+  <meta name="geo.region" content="NZ-WGN" />
+  <meta name="geo.placename" content="Wellington, New Zealand" />
+
+  <!-- ═══════════════════════════════════════════════
+       OPEN GRAPH — social sharing
+  ════════════════════════════════════════════════ -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://lani.nz/" />
+  <meta property="og:title"       content="Lani Raukawa Field — UX Architect & Trustworthy AI Consultant" />
+  <meta property="og:description" content="Human-centred design, trustworthy AI, and accessible government digital services. The future we're building should belong to everyone." />
+  <meta property="og:image"       content="https://lani.nz/assets/images/og-image.png" />
+  <meta property="og:locale"      content="en_NZ" />
+  <meta property="og:site_name"   content="Lani Raukawa Field" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Lani Raukawa Field — UX Architect & Trustworthy AI Consultant" />
+  <meta name="twitter:description" content="Human-centred design, trustworthy AI, and accessible government digital services." />
+  <meta name="twitter:image"       content="https://lani.nz/assets/images/og-image.png" />
+
+  <!-- ═══════════════════════════════════════════════
+       STRUCTURED DATA — Person + WebSite schema
+  ════════════════════════════════════════════════ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://lani.nz/#person",
+        "name": "Lani Raukawa Field",
+        "jobTitle": "UX Architect and Trustworthy AI Consultant",
+        "description": "Systems thinker specialising in human-centred design, trustworthy AI, accessibility, and government digital services.",
+        "url": "https://lani.nz",
+        "sameAs": [
+          "https://linkedin.com/in/lanifield",
+          "https://github.com/lanifield"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Wellington",
+          "addressCountry": "NZ"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://lani.nz/#website",
+        "url": "https://lani.nz",
+        "name": "Lani Raukawa Field",
+        "publisher": { "@id": "https://lani.nz/#person" }
+      }
+    ]
+  }
+  </script>
+
+  <!-- ═══════════════════════════════════════════════
+       PERFORMANCE — resource hints
+       Self-hosted fonts: preload the above-the-fold
+       weights to eliminate layout shift on first paint.
+       Oxanium is used in the header (first visible text).
+       Exo 2 regular is the body typeface throughout.
+  ════════════════════════════════════════════════ -->
+
+  <!-- Preload critical fonts — these are used above the fold -->
+  <link rel="preload"
+        href="assets/fonts/Oxanium-VariableFont_wght.woff2"
+        as="font"
+        type="font/woff2"
+        crossorigin="anonymous" />
+  <link rel="preload"
+        href="assets/fonts/Exo2-VariableFont_wght.woff2"
+        as="font"
+        type="font/woff2"
+        crossorigin="anonymous" />
+
+  <!-- Site stylesheets: load order matters — base → components → layout -->
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+
+  <!-- Favicon set — ico for broad support, png fallbacks -->
+  <link rel="icon"             href="assets/images/favicon.ico" sizes="any" />
+  <link rel="icon"             href="assets/images/favicon-32x32.png" type="image/png" sizes="32x32" />
+  <link rel="icon"             href="assets/images/favicon-16x16.png" type="image/png" sizes="16x16" />
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
+
+  <!-- Print stylesheet -->
+  <link rel="stylesheet" href="assets/css/print.css" media="print" />
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════════
+       SKIP NAVIGATION
+       Must be the very first focusable element.
+       Visible on focus only — keyboard users and
+       screen reader users can jump past repeated nav.
+  ════════════════════════════════════════════════ -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a class="skip-link" href="#site-nav">Skip to navigation</a>
+
+  <!-- ═══════════════════════════════════════════════
+       COOKIE CONSENT BANNER
+       Shown on first visit. Controls MS Clarity load.
+       Role="dialog" makes it a modal region for AT.
+  ════════════════════════════════════════════════ -->
+  <div id="cookie-banner"
+       role="dialog"
+       aria-modal="false"
+       aria-labelledby="cookie-banner-heading"
+       aria-describedby="cookie-banner-desc"
+       hidden>
+    <h2 id="cookie-banner-heading">Your privacy choices</h2>
+    <p id="cookie-banner-desc">
+      This site uses essential cookies to function. With your permission I also
+      use Microsoft Clarity to understand how people use the site — no personal
+      data is sold or shared. You can change your mind any time.
+    </p>
+    <div class="cookie-actions">
+      <button type="button" id="cookie-accept-all"     class="btn btn--primary">Accept analytics</button>
+      <button type="button" id="cookie-essential-only" class="btn btn--secondary">Essential only</button>
+      <button type="button" id="cookie-decline-all"    class="btn btn--ghost">Decline all</button>
+    </div>
+    <p>
+      <a href="terms.html#cookie-policy">Read the full cookie policy</a>
+    </p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       SITE HEADER
+       <header> with role="banner" is implicit but
+       explicit role added for older AT compatibility.
+       Sticky via CSS. Contains logo + nav.
+  ════════════════════════════════════════════════ -->
+  <header class="site-header" role="banner">
+    <div class="container site-header__inner">
+
+      <!-- Logo / site identity -->
+      <a class="site-header__logo" href="/" aria-label="Lani Raukawa Field — home">
+        <img src="assets/images/logo.svg"
+             alt=""
+             width="40"
+             height="40"
+             aria-hidden="true" />
+        <span class="site-header__name">
+          <span class="site-header__fullname">Lani Raukawa Field</span>
+          <span class="site-header__title">Consultant</span>
+        </span>
+      </a>
+
+      <!-- Hamburger toggle — visible on mobile only -->
+      <button class="nav-toggle"
+              type="button"
+              aria-controls="site-nav"
+              aria-expanded="false"
+              aria-label="Open navigation menu">
+        <!-- Three decorative lines; hidden from AT since label carries meaning -->
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+
+      <!-- Primary navigation
+           id="site-nav" matches skip-link target and aria-controls above -->
+      <nav id="site-nav"
+           class="site-nav"
+           aria-label="Primary navigation">
+        <ul class="site-nav__list" role="list">
+          <li><a href="/"          class="site-nav__link site-nav__link--active" aria-current="page">Home</a></li>
+          <li><a href="about.html" class="site-nav__link">About</a></li>
+          <li><a href="journal.html" class="site-nav__link">Journal</a></li>
+          <li><a href="contact.html" class="site-nav__link">Contact</a></li>
+        </ul>
+      </nav>
+
+    </div><!-- /.container -->
+  </header><!-- /site-header -->
+
+
+  <!-- ═══════════════════════════════════════════════
+       MAIN CONTENT
+       id="main-content" is the skip-link target.
+       <main> landmark is implicit but explicit for AT.
+  ════════════════════════════════════════════════ -->
+  <main id="main-content" role="main">
+
+
+    <!-- ───────────────────────────────────────────
+         SECTION 1 · HERO
+         Introduces Lani as a systems thinker.
+         Two-column layout: text left, image right.
+         Holographic tablet visual treatment via CSS.
+    ──────────────────────────────────────────── -->
+    <section class="section hero"
+             aria-labelledby="hero-heading">
+
+      <div class="container hero__inner">
+
+        <!-- Left column: text content -->
+        <div class="hero__content">
+
+          <h1 id="hero-heading" class="hero__heading">
+            Systems Thinker
+          </h1>
+
+          <p class="hero__subheading">
+            Humanity-centred design &amp; trustworthy AI
+          </p>
+
+          <!-- Two paragraphs of introduction copy.
+               Written to reflect Lani's warm, knowledgeable voice.
+               Placeholder — Lani may wish to refine this. -->
+          <p class="hero__body">
+            I work at the intersection of people, systems, and technology —
+            asking not just whether something works, but whether it works
+            <em>for everyone</em>. My practice is grounded in psychology,
+            shaped by government, and guided by a belief that good design
+            begins with listening.
+          </p>
+
+          <p class="hero__body">
+            As AI reshapes what digital services can do, I help organisations
+            think carefully about how — centering inclusion, accountability,
+            and the people most often left out of the room when decisions
+            are made.
+          </p>
+
+          <a href="about.html"
+             class="btn btn--primary">
+            Learn more about me
+            <span aria-hidden="true">→</span>
+          </a>
+
+        </div><!-- /.hero__content -->
+
+        <!-- Right column: avatar + skills highlight -->
+        <div class="hero__aside">
+
+          <!-- Avatar image
+               Decorative frame applied via CSS.
+               Alt text describes who this is, not the style treatment. -->
+          <div class="hero__avatar-frame" aria-hidden="false">
+            <img class="hero__avatar"
+                 src="assets/images/avatar.png"
+                 alt="Lani Raukawa Field, UX Architect"
+                 width="320"
+                 height="320"
+                 loading="eager" />
+          </div>
+
+          <!-- Skills highlight grid
+               3 columns × 1 row.
+               Role="list" on ul restores list semantics removed by
+               CSS list-style:none in some browsers/AT combinations. -->
+          <ul class="skills-highlight" role="list" aria-label="Areas of expertise">
+
+            <li class="skills-highlight__item">
+              <!-- Icon is decorative; label carries all meaning -->
+              <span class="skills-highlight__icon" aria-hidden="true">
+                <!-- Psi symbol — psychology / cognition -->
+                <svg width="24" height="24" viewBox="0 0 100 100" focusable="false"
+                     xmlns="http://www.w3.org/2000/svg">
+                  <path fill="currentColor" fill-rule="evenodd"
+                    d="m 67.304417,87.23545 0,-2.116402 c 0,0 -6.613757,0.132275 -8.465609,-1.322751
+                       -1.851852,-1.455027 -3.042328,-3.968254 -3.042328,-7.804233 0,-3.835979
+                       0,-12.037037 0,-12.037037 0,0 17.592593,-1.851853 23.148149,-7.407408
+                       5.555555,-5.555556 7.142856,-14.550264 7.142856,-20.10582 0,-2.777778
+                       0.02911,-10.243841 0.02911,-14.146836 0,-2.38388 0.421245,-6.628384
+                       3.656598,-6.628384 1.608726,0 4.118524,0.008 4.118524,0.008 l 0,-2.777777
+                       c 0,0 -3.439153,-0.132276 -5.555555,-0.132276 -2.116402,0
+                       -7.208995,0.330688 -9.78836,2.910053 -2.579365,2.579366
+                       -4.232804,9.656085 -4.232804,21.825397 0,12.169313 -1.058201,15.476191
+                       -4.100529,18.518519 -4.563971,4.563971 -14.41799,4.89418 -14.41799,4.89418
+                       0,0 0,-30.687831 0,-34.920635 0,-4.232804 -0.132275,-6.481482
+                       1.851852,-8.465609 1.984127,-1.984127 8.597884,-1.719576 8.597884,-1.719576
+                       l 0,-3.042328 -32.492432,0 0,3.042328 c 0,0 6.613757,-0.264551
+                       8.597884,1.719576 1.984127,1.984127 1.851852,4.232805 1.851852,8.465609
+                       0,4.232804 0,34.920635 0,34.920635 0,0 -9.854019,-0.330209
+                       -14.41799,-4.89418 C 26.743202,52.976191 25.685001,49.669313
+                       25.685001,37.5 c 0,-12.169312 -1.653439,-19.246031
+                       -4.232804,-21.825397 -2.579365,-2.579365 -7.671958,-2.910053
+                       -9.78836,-2.910053 -2.1164019,0 -5.5555551,0.132276
+                       -5.5555551,0.132276 l 0,2.777777 c 0,0 2.5097979,-0.008
+                       4.1185241,-0.008 3.235353,0 3.656598,4.244504 3.656598,6.628384
+                       0,3.902995 0.02911,11.369058 0.02911,14.146836 0,5.555556
+                       1.587301,14.550264 7.142856,20.10582 5.555556,5.555555
+                       23.148149,7.407408 23.148149,7.407408 0,0 0,8.201058
+                       0,12.037037 0,3.835979 -1.190476,6.349206 -3.042328,7.804233
+                       -1.851852,1.455026 -8.465609,1.322751 -8.465609,1.322751
+                       l 0,2.116402" />
+                </svg>
+              </span>
+              <span class="skills-highlight__abbr">PSYC</span>
+              <span class="skills-highlight__label">Cognition &amp; behaviour</span>
+            </li>
+
+            <li class="skills-highlight__item">
+              <span class="skills-highlight__icon" aria-hidden="true">
+                <!-- Civic building — government / public sector -->
+                <svg width="24" height="24" viewBox="0 0 390 373" focusable="false"
+                     xmlns="http://www.w3.org/2000/svg">
+                  <path fill="currentColor" stroke-width="0"
+                    d="m67.164558,130.0056l31.776917,0l4.885239,171.014328l-40.937836,0.00116l4.275681,-171.016083l0,0.000595zm-29.948761,177.162003l315.327385,0l0,22.00351l18.893341,0l-0.001129,22.00354l18.322998,0l0,22.001221l-389.758392,-0.00174l0,-21.999481l18.323006,0l0,-22.00354l18.892212,0l0,-22.00351l0.00058,0zm331.772636,-224.911293l-174.112427,-82.25631l-174.115273,82.25631l0.001144,13.447571l348.225975,0.001144l0,-13.448715l0.00058,0zm-314.660698,19.600403l281.104668,0l0,21.999496l-281.104668,0l0,-21.999496zm235.877312,28.148888l31.776886,0l4.886414,171.016068l-40.937256,-0.00174l4.273956,-171.014328zm-74.346817,0l31.776901,0.001144l4.886383,171.013184l-40.938995,0.00116l4.275711,-171.016083l0,0.000595zm-74.346848,0l31.775757,-0.001755l4.888748,171.016083l-40.94017,0l4.275665,-171.014328z" />
+                </svg>
+              </span>
+              <span class="skills-highlight__abbr">GOVT</span>
+              <span class="skills-highlight__label">Digital consultancy</span>
+            </li>
+
+            <li class="skills-highlight__item">
+              <span class="skills-highlight__icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" focusable="false"
+                     xmlns="http://www.w3.org/2000/svg">
+                  <!-- Star / disciplines icon path placeholder -->
+                  <polygon points="12,2 15,9 22,9 16,14 18,21 12,17 6,21 8,14 2,9 9,9"
+                           stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="skills-highlight__abbr">5+</span>
+              <span class="skills-highlight__label">Core disciplines</span>
+            </li>
+
+          </ul><!-- /.skills-highlight -->
+
+        </div><!-- /.hero__aside -->
+
+      </div><!-- /.container -->
+
+    </section><!-- /hero -->
+
+
+    <!-- ───────────────────────────────────────────
+         SECTION 2 · WHAKATAUKI
+         Block quotation with Māori text and
+         English translation. Lang attributes ensure
+         correct pronunciation for screen readers
+         and text-to-speech engines.
+    ──────────────────────────────────────────── -->
+    <section class="section whakatauaki"
+             aria-label="Whakatauki — guiding proverb">
+
+      <div class="container">
+
+        <figure class="whakatauaki__figure">
+          <blockquote class="whakatauaki__quote" lang="mi">
+            <p>He aha te mea nui o te ao?<br />
+               He tangata! He tangata! He tangata!</p>
+          </blockquote>
+          <figcaption class="whakatauaki__translation" lang="en">
+            <p>What is the most important thing in the world?<br />
+               It is people! It is people! It is people!</p>
+          </figcaption>
+        </figure>
+
+      </div><!-- /.container -->
+
+    </section><!-- /whakatauaki -->
+
+
+    <!-- ───────────────────────────────────────────
+         SECTION 3 · JOURNAL PREVIEW
+         Three most recent journal cards.
+         Cards are populated from journal.json via
+         journal.js — falls back gracefully if JS
+         is unavailable (empty state message shown).
+         aria-live="polite" announces updates to AT
+         when new cards load.
+    ──────────────────────────────────────────── -->
+    <section class="section journal-preview"
+             aria-labelledby="journal-preview-heading">
+
+      <div class="container">
+
+        <!-- Section header: title left, CTA right -->
+        <div class="journal-preview__header">
+          <h2 id="journal-preview-heading" class="journal-preview__title">
+            From the journal
+          </h2>
+          <a href="journal.html"
+             class="btn btn--secondary">
+            Browse all journal entries
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <!-- Card grid
+             aria-live so screen readers announce
+             when JS populates the cards. -->
+        <ul class="card-grid"
+            id="journal-preview-grid"
+            role="list"
+            aria-live="polite"
+            aria-label="Recent journal entries">
+
+          <!-- No-JS / loading fallback — hidden once JS populates -->
+          <li class="card-grid__fallback" id="journal-preview-fallback">
+            <p>Loading recent journal entries…</p>
+            <p>If this message persists,
+               <a href="journal.html">view all journal entries</a>.</p>
+          </li>
+
+        </ul><!-- /.card-grid -->
+
+      </div><!-- /.container -->
+
+    </section><!-- /journal-preview -->
+
+
+    <!-- ───────────────────────────────────────────
+         SECTION 4 · PHILOSOPHY / SERVICE POSITION
+         Introduces Lani's guiding philosophy.
+         Leads visitors toward the contact page.
+    ──────────────────────────────────────────── -->
+    <section class="section philosophy"
+             aria-labelledby="philosophy-heading">
+
+      <div class="container philosophy__inner">
+
+        <h2 id="philosophy-heading" class="philosophy__title">
+          Philosophy
+        </h2>
+
+        <p class="philosophy__body">
+          The future we're building with AI should belong to everyone.
+          My work bridges humanity and technology, focusing on inclusion,
+          using the wisdom of diverse perspectives.
+        </p>
+
+        <a href="contact.html"
+           class="btn btn--primary">
+          Work with me
+          <span aria-hidden="true">→</span>
+        </a>
+
+      </div><!-- /.container -->
+
+    </section><!-- /philosophy -->
+
+
+  </main><!-- /main-content -->
+
+
+  <!-- ═══════════════════════════════════════════════
+       SITE FOOTER
+       <footer> with role="contentinfo" is implicit
+       but explicit for older AT.
+  ════════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container site-footer__inner">
+
+      <!-- Footer identity -->
+      <div class="site-footer__brand">
+        <p class="site-footer__name">Lani Raukawa Field</p>
+        <p class="site-footer__statement">
+          Systems Thinker and UX Architect exploring Trustworthy AI.
+        </p>
+      </div>
+
+      <!-- Footer navigation -->
+      <nav class="site-footer__nav"
+           aria-label="Footer navigation">
+        <ul role="list">
+          <li><a href="terms.html">Terms &amp; policies</a></li>
+          <li><button type="button" id="cookie-settings-toggle">Cookie settings</button></li>
+        </ul>
+      </nav>
+
+      <!-- Social links -->
+      <nav class="site-footer__social"
+           aria-label="Social media links">
+        <ul role="list">
+
+          <li>
+            <a href="https://linkedin.com/in/lanifield"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="LinkedIn profile (opens in new tab)">
+              <svg class="social-icon" width="24" height="24" viewBox="0 0 24 24"
+                   focusable="false" aria-hidden="true"
+                   xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+              <span class="sr-only">LinkedIn</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="https://github.com/lanifield"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="GitHub profile (opens in new tab)">
+              <svg class="social-icon" width="24" height="24" viewBox="0 0 24 24"
+                   focusable="false" aria-hidden="true"
+                   xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+              </svg>
+              <span class="sr-only">GitHub</span>
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+
+      <!-- Back to top -->
+      <a href="#main-content"
+         class="site-footer__back-top"
+         aria-label="Back to top of page">
+        <span aria-hidden="true">↑</span>
+        Back to top
+      </a>
+
+      <!-- Copyright and te reo acknowledgement -->
+      <div class="site-footer__legal">
+        <p>
+          <small>
+            &copy; <span id="copyright-year"></span> Lani Raukawa Field.
+            All rights reserved.
+          </small>
+        </p>
+        <p class="site-footer__whakatauaki" lang="mi">
+          <small>
+            <em>I hangaia me te aroha.</em>
+            <span lang="en">Diversity, equity, and inclusion front of mind.</span>
+          </small>
+        </p>
+      </div>
+
+    </div><!-- /.container -->
+  </footer><!-- /site-footer -->
+
+
+  <!-- ═══════════════════════════════════════════════
+       SCRIPTS
+       Loaded async at end of body.
+       Order: cookie consent → journal loader → nav.
+       MS Clarity injected by cookie-consent.js only
+       when analytics consent is granted.
+  ════════════════════════════════════════════════ -->
+
+  <!-- Dynamic copyright year — no framework needed -->
+  <script>
+    document.getElementById('copyright-year').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Cookie consent manager
+       Handles banner display, localStorage preference,
+       and conditional Clarity injection. -->
+  <script src="assets/js/cookie-consent.js" defer></script>
+
+  <!-- Navigation: hamburger toggle + active state -->
+  <script src="assets/js/nav.js" defer></script>
+
+  <!-- Journal preview loader
+       Fetches journal.json and renders latest 3 cards. -->
+  <script src="assets/js/journal-preview.js" defer></script>
+
+</body>
+</html>

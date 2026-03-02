@@ -1,0 +1,367 @@
+/* ================================================================
+   LAYOUT.CSS — Lani Raukawa Field · lanifield.nz
+   Page-level layout, section spacing, hero, responsive grid
+   ================================================================
+   Table of contents:
+     1.  Section base
+     2.  Hero layout
+     3.  Avatar frame
+     4.  Whakatauki section spacing
+     5.  Journal preview section
+     6.  Philosophy section spacing
+     7.  Page-level background
+     8.  Utility layout helpers
+   ================================================================ */
+
+
+/* ----------------------------------------------------------------
+   1. SECTION BASE
+   Consistent vertical rhythm across all sections.
+   ---------------------------------------------------------------- */
+
+.section {
+  padding-block: var(--space-16);
+}
+
+@media (min-width: 800px) {
+  .section {
+    padding-block: var(--space-24);
+  }
+}
+
+
+/* ----------------------------------------------------------------
+   2. HERO LAYOUT
+   Two-column at 800px+: text left, avatar/skills right.
+   Below 800px: stacked, text first.
+   ---------------------------------------------------------------- */
+
+.hero {
+  padding-block-start: calc(var(--space-16) + var(--space-4));
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background atmosphere — deep radial glow, top-left */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 70%;
+  height: 120%;
+  background: radial-gradient(
+    ellipse at 30% 40%,
+    rgba(141, 89, 210, 0.10) 0%,
+    rgba(72, 246, 248, 0.05) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+@media (min-width: 800px) {
+  .hero__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero__inner {
+    grid-template-columns: 3fr 2fr;
+  }
+}
+
+/* Left column: text content */
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.hero__heading {
+  font-size: clamp(var(--text-3xl), 6vw, var(--text-4xl));
+  font-weight: var(--weight-extrabold);
+  letter-spacing: var(--tracking-tight);
+  line-height: 1.05;
+  color: var(--color-smoke);
+
+  /* Gradient text — cyan to lavender */
+  background: linear-gradient(
+    135deg,
+    var(--color-cyan) 0%,
+    var(--color-smoke) 50%,
+    var(--color-lavender) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Fallback for browsers without gradient text */
+@supports not (-webkit-background-clip: text) {
+  .hero__heading {
+    color: var(--color-smoke);
+  }
+}
+
+.hero__subheading {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-md), 2vw, var(--text-xl));
+  font-weight: var(--weight-medium);
+  color: var(--color-lavender);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  max-width: none;
+}
+
+.hero__body {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  line-height: var(--leading-loose);
+  max-width: 52ch;
+}
+
+.hero__body em {
+  color: var(--color-cyan);
+  font-style: normal;
+  font-weight: var(--weight-medium);
+}
+
+/* Right column: avatar + skills */
+.hero__aside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+@media (min-width: 800px) {
+  .hero__aside {
+    align-items: center;
+    justify-self: center;
+    width: 100%;
+    max-width: 380px;
+  }
+}
+
+
+/* ----------------------------------------------------------------
+   3. AVATAR FRAME
+   Hexagonal clip + animated scan line + glow border.
+   ---------------------------------------------------------------- */
+
+.hero__avatar-frame {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  flex-shrink: 0;
+}
+
+@media (min-width: 500px) {
+  .hero__avatar-frame {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+/* Outer glow ring */
+.hero__avatar-frame::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    var(--color-cyan),
+    var(--color-lavender),
+    var(--color-cyan)
+  );
+  animation: ring-spin 8s linear infinite;
+  z-index: -1;
+}
+
+@keyframes ring-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Inner mask to create ring effect */
+.hero__avatar-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background: var(--color-bg) padding-box;
+  z-index: 0;
+}
+
+.hero__avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  position: relative;
+  z-index: 1;
+  display: block;
+
+  /* Subtle filter to match cyberpunk palette */
+  filter: saturate(0.9) contrast(1.05);
+}
+
+/* Scan line animation */
+.hero__avatar-frame .scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(72, 246, 248, 0.6),
+    transparent
+  );
+  z-index: 2;
+  pointer-events: none;
+  border-radius: 50%;
+  animation: scan 4s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+/* Pause scan line if reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero__avatar-frame::before {
+    animation: none;
+  }
+  .hero__avatar-frame .scan-line {
+    animation: none;
+    display: none;
+  }
+}
+
+
+/* ----------------------------------------------------------------
+   4. WHAKATAUKI SECTION SPACING
+   ---------------------------------------------------------------- */
+
+.whakatauaki {
+  padding-block: var(--space-16);
+}
+
+@media (min-width: 800px) {
+  .whakatauaki {
+    padding-block: var(--space-24);
+  }
+}
+
+
+/* ----------------------------------------------------------------
+   5. JOURNAL PREVIEW SECTION
+   ---------------------------------------------------------------- */
+
+.journal-preview {
+  background-color: var(--color-bg);
+}
+
+
+/* ----------------------------------------------------------------
+   6. PHILOSOPHY SECTION SPACING
+   ---------------------------------------------------------------- */
+
+.philosophy {
+  padding-block: var(--space-24);
+}
+
+@media (min-width: 800px) {
+  .philosophy {
+    padding-block: var(--space-32);
+  }
+}
+
+
+/* ----------------------------------------------------------------
+   7. PAGE-LEVEL BACKGROUND
+   Subtle noise texture overlay on body via SVG data URI.
+   Adds depth without additional HTTP request.
+   ---------------------------------------------------------------- */
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  /* Micro-noise: very subtle dot pattern */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='1' height='1' fill='rgba(248,248,255,0.015)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+  z-index: var(--z-below);
+}
+
+
+/* ----------------------------------------------------------------
+   8. UTILITY LAYOUT HELPERS
+   ---------------------------------------------------------------- */
+
+/* Flex row — quick utility for inline alignment */
+.u-flex-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+/* Cluster — wrapping flex row */
+.u-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+/* Stack — vertical flex */
+.u-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* Text: display font override */
+.u-font-display {
+  font-family: var(--font-display);
+}
+
+/* Colour utilities */
+.u-color-primary   { color: var(--color-primary); }
+.u-color-secondary { color: var(--color-secondary); }
+.u-color-accent    { color: var(--color-accent); }
+.u-color-muted     { color: var(--color-text-muted); }
+
+/* Text size utilities */
+.u-text-sm  { font-size: var(--text-sm); }
+.u-text-xs  { font-size: var(--text-xs); }
+
+/* Section divider — visible rule */
+.u-divider {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin-block: var(--space-8);
+}
+
+/* Visually hidden heading (for landmark labelling) */
+.u-section-label {
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+  margin-bottom: var(--space-6);
+}
