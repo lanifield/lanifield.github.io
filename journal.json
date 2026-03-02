@@ -1,0 +1,58 @@
+{
+  "entries": [
+    {
+      "id": "learning-in-public-with-ai",
+      "title": "Learning in Public: What Happens When You Build with AI Alongside Your Users",
+      "excerpt": "There is something both humbling and clarifying about sharing your learning as it happens. When I started using AI tools in my UX practice, I made a deliberate choice to document the process — not the polished outcome, but the messy, iterative middle.",
+      "category": "AI & Design",
+      "date": "2025-02-12",
+      "readTime": "7 min read",
+      "url": "journal/learning-in-public-with-ai.html"
+    },
+    {
+      "id": "accessibility-beyond-compliance",
+      "title": "Accessibility Beyond Compliance: Why the Minimum Is Never Enough",
+      "excerpt": "WCAG tells us what we must do. But the lived experience of disabled people tells us what we should do. These are often the same thing — and sometimes they are not, which is where the interesting work begins.",
+      "category": "Accessibility",
+      "date": "2025-01-28",
+      "readTime": "6 min read",
+      "url": "journal/accessibility-beyond-compliance.html"
+    },
+    {
+      "id": "ai-for-government-services",
+      "title": "Ethical AI in Government Digital Services: Questions Worth Sitting With",
+      "excerpt": "As AI capabilities are introduced into services that millions of New Zealanders depend on — from housing to justice to welfare — the questions we ask at the design stage carry real consequences. This is a reflection on where I think we are, and where we need to go.",
+      "category": "Government & Ethics",
+      "date": "2025-01-14",
+      "readTime": "9 min read",
+      "url": "journal/ai-for-government-services.html"
+    },
+    {
+      "id": "information-architecture-fundamentals",
+      "title": "Information Architecture: The Invisible Work That Makes Everything Findable",
+      "excerpt": "Most people never think about how content is organised — until it isn't. Good information architecture is the quiet infrastructure of the web: the difference between a service people navigate confidently and one that loses people on step two.",
+      "category": "UX Craft",
+      "date": "2024-12-19",
+      "readTime": "5 min read",
+      "url": "journal/information-architecture-fundamentals.html"
+    },
+    {
+      "id": "conversation-design-tips",
+      "title": "Five Things the IxDF Conversation Design Masterclass Taught Me About AI Interfaces",
+      "excerpt": "Conversational AI is having a moment, but many of the patterns people are building haven't been tested against the mental models of real users. Here are five ideas from the Conversation Design Masterclass that I keep returning to.",
+      "category": "Conversation Design",
+      "date": "2024-12-03",
+      "readTime": "6 min read",
+      "url": "journal/conversation-design-tips.html"
+    },
+    {
+      "id": "tiriti-and-digital-design",
+      "title": "Te Tiriti o Waitangi and Digital Design: Whose Values Are Embedded in the Interface?",
+      "excerpt": "Every design decision encodes values. The question is which values — and whose. Engaging honestly with Te Tiriti as a framework for digital services in Aotearoa means asking harder questions than most design processes are set up to handle.",
+      "category": "Ethics & Equity",
+      "date": "2024-11-20",
+      "readTime": "8 min read",
+      "url": "journal/tiriti-and-digital-design.html"
+    }
+  ]
+}

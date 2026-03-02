@@ -1,0 +1,515 @@
+/* ================================================================
+   BASE.CSS — Lani Raukawa Field · lanifield.nz
+   Design tokens · Reset · Typography · Accessibility utilities
+   ================================================================
+   Table of contents:
+     1. Design tokens (custom properties)
+     2. @font-face declarations
+     3. Reset & box model
+     4. Base typography
+     5. Focus styles
+     6. Accessibility utilities
+     7. Reduced-motion preferences
+   ================================================================ */
+
+
+/* ----------------------------------------------------------------
+   1. DESIGN TOKENS
+   All visual decisions in one place.
+   Changing a token here propagates everywhere.
+   ---------------------------------------------------------------- */
+
+:root {
+
+  /* Colour palette */
+  --color-void:      #080016;   /* Shadow Void — body background          */
+  --color-void-80:   #0f0024;   /* Slightly lighter — card/panel bg       */
+  --color-void-60:   #1a0035;   /* Section alternates                     */
+  --color-smoke:     #f8f8ff;   /* Smokey White — body text               */
+  --color-smoke-70:  rgba(248, 248, 255, 0.70); /* Muted body text        */
+  --color-smoke-40:  rgba(248, 248, 255, 0.40); /* Placeholder / disabled */
+  --color-cyan:      #48f6f8;   /* Electric Cyan — primary accent          */
+  --color-cyan-dim:  rgba(72, 246, 248, 0.15);  /* Glow / hover fill      */
+  --color-lavender:  #8d59d2;   /* Digital Lavender — secondary accent    */
+  --color-lavender-dim: rgba(141, 89, 210, 0.15);
+  --color-green:     #4efd54;   /* Neon Green — tertiary / success        */
+  --color-green-dim: rgba(78, 253, 84, 0.12);
+
+  /* Semantic colour aliases */
+  --color-bg:            var(--color-void);
+  --color-bg-raised:     var(--color-void-80);
+  --color-bg-elevated:   var(--color-void-60);
+  --color-text:          var(--color-smoke);
+  --color-text-muted:    var(--color-smoke-70);
+  --color-text-subtle:   var(--color-smoke-40);
+  --color-primary:       var(--color-cyan);
+  --color-secondary:     var(--color-lavender);
+  --color-accent:        var(--color-green);
+  --color-border:        rgba(72, 246, 248, 0.20);
+  --color-border-strong: rgba(72, 246, 248, 0.45);
+
+  /* Focus ring — WCAG 2.2 §2.4.11 requires 2px + 3:1 ratio */
+  --color-focus:         var(--color-cyan);
+  --focus-ring:          0 0 0 3px var(--color-focus);
+
+  /* Typography */
+  --font-display: 'Oxanium', 'Courier New', monospace;
+  --font-body:    'Exo 2', 'Segoe UI', system-ui, sans-serif;
+
+  /* Type scale — Major Third (×1.250) from 1rem base
+     Calculated: base × ratio^n
+     xs   0.64rem   ×0.512
+     sm   0.80rem   ×0.640
+     md   1.00rem   base
+     lg   1.25rem   ×1.250
+     xl   1.563rem  ×1.563
+     2xl  1.953rem  ×1.953
+     3xl  2.441rem  ×2.441
+     4xl  3.052rem  ×3.052
+  */
+  --text-xs:  0.64rem;
+  --text-sm:  0.80rem;
+  --text-md:  1.00rem;
+  --text-lg:  1.25rem;
+  --text-xl:  1.563rem;
+  --text-2xl: 1.953rem;
+  --text-3xl: 2.441rem;
+  --text-4xl: 3.052rem;
+
+  /* Font weights (variable font range 200–800 for both families) */
+  --weight-light:    300;
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+  --weight-extrabold: 800;
+
+  /* Line heights */
+  --leading-tight:  1.2;
+  --leading-snug:   1.35;
+  --leading-base:   1.6;
+  --leading-loose:  1.75;
+
+  /* Letter spacing */
+  --tracking-tight:  -0.02em;
+  --tracking-normal:  0em;
+  --tracking-wide:    0.05em;
+  --tracking-wider:   0.10em;
+  --tracking-widest:  0.15em;
+
+  /* Spacing — 8pt grid
+     4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 96 / 128px */
+  --space-1:  0.25rem;   /*  4px */
+  --space-2:  0.50rem;   /*  8px */
+  --space-3:  0.75rem;   /* 12px */
+  --space-4:  1.00rem;   /* 16px */
+  --space-6:  1.50rem;   /* 24px */
+  --space-8:  2.00rem;   /* 32px */
+  --space-12: 3.00rem;   /* 48px */
+  --space-16: 4.00rem;   /* 64px */
+  --space-24: 6.00rem;   /* 96px */
+  --space-32: 8.00rem;   /* 128px */
+
+  /* Border radius */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:  12px;
+  --radius-xl:  16px;
+  --radius-full: 9999px;
+
+  /* Borders */
+  --border-thin:   1px solid var(--color-border);
+  --border-medium: 1px solid var(--color-border-strong);
+
+  /* Shadows — coloured for dark-mode depth */
+  --shadow-sm:  0 1px 4px rgba(72, 246, 248, 0.08);
+  --shadow-md:  0 4px 16px rgba(72, 246, 248, 0.12),
+                0 1px 4px  rgba(0, 0, 0, 0.40);
+  --shadow-lg:  0 8px 32px rgba(72, 246, 248, 0.15),
+                0 2px 8px  rgba(0, 0, 0, 0.50);
+  --shadow-glow-cyan:     0 0 24px rgba(72, 246, 248, 0.35);
+  --shadow-glow-lavender: 0 0 24px rgba(141, 89, 210, 0.40);
+
+  /* Layout */
+  --container-max:    1200px;
+  --container-narrow:  720px;
+  --container-wide:   1400px;
+  --header-height:      64px;
+
+  /* Transitions */
+  --transition-fast:   150ms ease-out;
+  --transition-base:   250ms ease-out;
+  --transition-slow:   400ms ease-out;
+  --transition-spring: 350ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Z-index scale */
+  --z-below:   -1;
+  --z-base:     0;
+  --z-raised:  10;
+  --z-nav:     100;
+  --z-overlay: 200;
+  --z-modal:   300;
+  --z-toast:   400;
+}
+
+
+/* ----------------------------------------------------------------
+   2. @FONT-FACE DECLARATIONS
+   Variable fonts — one request per family.
+   font-display: swap prevents invisible text during load.
+   @supports ensures variable axes work where supported.
+   ---------------------------------------------------------------- */
+
+/* Oxanium — display / headings (weight range 200–800) */
+@font-face {
+  font-family: 'Oxanium';
+  src: url('../fonts/Oxanium-VariableFont_wght.woff2') format('woff2 supports variations'),
+       url('../fonts/Oxanium-VariableFont_wght.woff2') format('woff2-variations');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Exo 2 — body / UI (weight range 100–900) */
+@font-face {
+  font-family: 'Exo 2';
+  src: url('../fonts/Exo2-VariableFont_wght.woff2') format('woff2 supports variations'),
+       url('../fonts/Exo2-VariableFont_wght.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Exo 2 Italic — used for whakatauki quote */
+@font-face {
+  font-family: 'Exo 2';
+  src: url('../fonts/Exo2-Italic-VariableFont_wght.woff2') format('woff2 supports variations'),
+       url('../fonts/Exo2-Italic-VariableFont_wght.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+
+/* ----------------------------------------------------------------
+   3. RESET & BOX MODEL
+   Minimal opinionated reset — not a full normalise.
+   ---------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* Prevent font size inflation on mobile */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+
+  /* Smooth scroll — overridden to instant for reduced-motion */
+  scroll-behavior: smooth;
+
+  /* Set root font — 16px = 1rem */
+  font-size: 100%;
+
+  /* Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-base);
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+/* Remove default list styles — re-added where semantic context needs them */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Improve media defaults */
+img,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Inherit fonts for form elements */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+/* Remove button browser defaults */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Improve link defaults */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Horizontal rule */
+hr {
+  border: none;
+  border-top: var(--border-thin);
+  margin-block: var(--space-8);
+}
+
+/* Prevent orphans on short text elements */
+p,
+li,
+figcaption {
+  text-wrap: pretty;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+/* SVG colour inheritance */
+svg {
+  fill: currentColor;
+  overflow: visible;
+}
+
+
+/* ----------------------------------------------------------------
+   4. BASE TYPOGRAPHY
+   ---------------------------------------------------------------- */
+
+/* Headings — display font, tight tracking */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+  color: var(--color-text);
+}
+
+h4, h5, h6 {
+  font-family: var(--font-body);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-snug);
+  color: var(--color-text);
+}
+
+h1 { font-size: clamp(var(--text-2xl), 5vw, var(--text-4xl)); }
+h2 { font-size: clamp(var(--text-xl),  4vw, var(--text-3xl)); }
+h3 { font-size: clamp(var(--text-lg),  3vw, var(--text-2xl)); }
+h4 { font-size: var(--text-xl); }
+h5 { font-size: var(--text-lg); }
+h6 { font-size: var(--text-md); }
+
+/* Body text */
+p {
+  max-width: 68ch;  /* Optimal reading measure */
+  color: var(--color-text-muted);
+}
+
+/* Links inline in body text */
+p a,
+li a,
+figcaption a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color var(--transition-fast),
+              text-decoration-color var(--transition-fast);
+}
+
+p a:hover,
+li a:hover,
+figcaption a:hover {
+  color: var(--color-smoke);
+  text-decoration-color: var(--color-cyan);
+}
+
+/* Emphasis */
+em {
+  font-style: italic;
+  color: var(--color-primary);
+}
+
+strong {
+  font-weight: var(--weight-bold);
+  color: var(--color-text);
+}
+
+/* Small text */
+small {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* Block quotation */
+blockquote {
+  border-left: 3px solid var(--color-lavender);
+  padding-left: var(--space-6);
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+/* Code — used in journal entries */
+code {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.875em;
+  background-color: var(--color-bg-raised);
+  color: var(--color-cyan);
+  padding: 0.1em 0.35em;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+}
+
+pre {
+  background-color: var(--color-bg-raised);
+  border: var(--border-thin);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  overflow-x: auto;
+}
+
+pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: var(--text-sm);
+}
+
+
+/* ----------------------------------------------------------------
+   5. FOCUS STYLES
+   WCAG 2.2 §2.4.11 — Focus Appearance.
+   Visible focus ring on ALL interactive elements,
+   not just keyboard navigation.
+   ---------------------------------------------------------------- */
+
+/* Remove default browser outlines — we provide our own */
+:focus {
+  outline: none;
+}
+
+/* Apply focus ring to all interactive elements */
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* Button focus — slightly larger offset */
+button:focus-visible,
+[role="button"]:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 4px;
+  border-radius: var(--radius-md);
+}
+
+/* Link focus within text — offset avoids underlining clash */
+a:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+
+/* ----------------------------------------------------------------
+   6. ACCESSIBILITY UTILITIES
+   ---------------------------------------------------------------- */
+
+/* Visually hidden — readable by AT, invisible on screen.
+   Standard pattern; do not use display:none or visibility:hidden. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focusable sr-only — reveals on focus (used for skip links) */
+.sr-only-focusable:focus,
+.sr-only-focusable:focus-visible {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: var(--space-2) var(--space-4);
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Skip link
+   Positioned off-screen until focused.
+   Appears top-left when tabbed to.  */
+.skip-link {
+  position: fixed;
+  top: var(--space-4);
+  left: var(--space-4);
+  z-index: var(--z-toast);
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  padding: var(--space-3) var(--space-6);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  transform: translateY(-200%);
+  transition: transform var(--transition-fast);
+  text-decoration: none;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+
+/* ----------------------------------------------------------------
+   7. REDUCED-MOTION PREFERENCES
+   Respects prefers-reduced-motion at the base level.
+   Components add their own motion; this ensures the
+   baseline is always safe.
+   ---------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

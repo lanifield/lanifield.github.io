@@ -1,0 +1,966 @@
+/* ================================================================
+   COMPONENTS.CSS — Lani Raukawa Field · lanifield.nz
+   Reusable UI components
+   ================================================================
+   Table of contents:
+     1.  Container
+     2.  Buttons
+     3.  Site header & logo
+     4.  Navigation
+     5.  Cookie consent banner
+     6.  Journal cards
+     7.  Skills highlight
+     8.  Whakatauki (proverb block)
+     9.  Philosophy section
+    10.  Site footer
+    11.  Decorative: circuit-trace motif
+   ================================================================ */
+
+
+/* ----------------------------------------------------------------
+   1. CONTAINER
+   Centred wrapper with responsive horizontal padding.
+   ---------------------------------------------------------------- */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--space-6);
+}
+
+@media (min-width: 800px) {
+  .container {
+    padding-inline: var(--space-8);
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    padding-inline: var(--space-12);
+  }
+}
+
+
+/* ----------------------------------------------------------------
+   2. BUTTONS
+   Two variants: primary (cyan outline) and secondary (ghost).
+   Focus, hover, and active states all visible.
+   ---------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--transition-base),
+              color var(--transition-base),
+              border-color var(--transition-base),
+              box-shadow var(--transition-base),
+              transform var(--transition-fast);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+/* Primary — Electric Cyan outline, fills on hover */
+.btn--primary {
+  color: var(--color-cyan);
+  border-color: var(--color-cyan);
+  background-color: transparent;
+}
+
+.btn--primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-cyan);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.btn--primary:hover {
+  color: var(--color-void);
+  box-shadow: var(--shadow-glow-cyan);
+}
+
+.btn--primary:hover::before {
+  opacity: 1;
+}
+
+.btn--primary span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn--primary:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 4px;
+}
+
+/* Secondary — Lavender ghost */
+.btn--secondary {
+  color: var(--color-lavender);
+  border-color: var(--color-lavender);
+  background-color: transparent;
+}
+
+.btn--secondary:hover {
+  background-color: var(--color-lavender-dim);
+  box-shadow: var(--shadow-glow-lavender);
+}
+
+.btn--secondary:focus-visible {
+  outline: 3px solid var(--color-lavender);
+  outline-offset: 4px;
+}
+
+/* Text only — no border, for inline CTAs */
+.btn--ghost {
+  color: var(--color-cyan);
+  border-color: transparent;
+  padding-inline: var(--space-2);
+}
+
+.btn--ghost:hover {
+  color: var(--color-smoke);
+}
+
+
+/* ----------------------------------------------------------------
+   3. SITE HEADER
+   Sticky, full-width dark bar.
+   Inner content uses flex layout.
+   ---------------------------------------------------------------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-nav);
+  background-color: var(--color-void);
+  border-bottom: 1px solid var(--color-border);
+  height: var(--header-height);
+
+  /* Subtle backdrop blur for glass-panel feel */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  /* Compensate when backdrop-filter not supported */
+  background-color: rgba(8, 0, 22, 0.95);
+}
+
+.site-header__inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+/* Logo / site identity link */
+.site-header__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.site-header__logo img {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.site-header__name {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.site-header__fullname {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--color-smoke);
+  letter-spacing: var(--tracking-wide);
+  line-height: 1.1;
+}
+
+.site-header__title {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-regular);
+  color: var(--color-text-muted);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.site-header__logo:hover .site-header__fullname {
+  color: var(--color-cyan);
+  transition: color var(--transition-fast);
+}
+
+
+/* ----------------------------------------------------------------
+   4. NAVIGATION
+   Mobile: hidden off-screen, slides in on toggle.
+   Desktop: horizontal flex list.
+   ---------------------------------------------------------------- */
+
+/* Hamburger button — mobile only */
+.nav-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: var(--space-2);
+  flex-shrink: 0;
+  position: relative;
+  z-index: var(--z-nav);
+}
+
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: var(--color-smoke);
+  border-radius: var(--radius-full);
+  transform-origin: center;
+  transition: transform var(--transition-base),
+              opacity var(--transition-base),
+              background-color var(--transition-fast);
+}
+
+.nav-toggle:hover span {
+  background-color: var(--color-cyan);
+}
+
+/* Animated to X when open */
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Nav list — mobile: hidden by default */
+.site-nav {
+  position: fixed;
+  inset: var(--header-height) 0 0 0;
+  background-color: rgba(8, 0, 22, 0.97);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity var(--transition-base),
+              visibility var(--transition-base),
+              transform var(--transition-base);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.site-nav.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.site-nav__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.site-nav__link {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color var(--transition-fast);
+  position: relative;
+  padding-block: var(--space-2);
+}
+
+.site-nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-cyan);
+  transition: width var(--transition-base);
+}
+
+.site-nav__link:hover {
+  color: var(--color-smoke);
+}
+
+.site-nav__link:hover::after {
+  width: 100%;
+}
+
+.site-nav__link--active {
+  color: var(--color-cyan);
+}
+
+.site-nav__link--active::after {
+  width: 100%;
+}
+
+/* Desktop nav — horizontal, no overlay */
+@media (min-width: 800px) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .site-nav {
+    position: static;
+    background: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    inset: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  .site-nav__list {
+    flex-direction: row;
+    gap: var(--space-8);
+  }
+
+  .site-nav__link {
+    font-size: var(--text-sm);
+  }
+}
+
+
+/* ----------------------------------------------------------------
+   5. COOKIE CONSENT BANNER
+   Appears at bottom of viewport.
+   Two consent tiers: necessary-only or analytics-included.
+   ---------------------------------------------------------------- */
+
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-overlay);
+  background-color: var(--color-bg-raised);
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-6);
+  transform: translateY(100%);
+  transition: transform var(--transition-slow);
+  box-shadow: 0 -4px 24px rgba(72, 246, 248, 0.08);
+}
+
+.cookie-banner.is-visible {
+  transform: translateY(0);
+}
+
+.cookie-banner__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.cookie-banner__text {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  max-width: 60ch;
+}
+
+.cookie-banner__text a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cookie-banner__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+@media (min-width: 800px) {
+  .cookie-banner__inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+
+/* ----------------------------------------------------------------
+   6. JOURNAL CARDS
+   Card grid — 1 / 2 / 3 columns at breakpoints.
+   Each card has category tag, title, excerpt, date, read-more link.
+   ---------------------------------------------------------------- */
+
+/* Section header row: title left, CTA right */
+.journal-preview__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.journal-preview__title {
+  color: var(--color-smoke);
+}
+
+@media (min-width: 500px) {
+  .journal-preview__header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* Card grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  list-style: none;
+}
+
+@media (min-width: 500px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 800px) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Loading fallback */
+.card-grid__fallback {
+  grid-column: 1 / -1;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+/* Individual card */
+.card {
+  background-color: var(--color-bg-raised);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  transition: border-color var(--transition-base),
+              box-shadow var(--transition-base),
+              transform var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle top-edge glow on hover */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-cyan),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.card:hover {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* Category tag */
+.card__category {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-lavender);
+  background-color: var(--color-lavender-dim);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(141, 89, 210, 0.30);
+  width: fit-content;
+}
+
+/* Card title */
+.card__title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  color: var(--color-smoke);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  margin: 0;
+}
+
+.card__title a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.card__title a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.card__title a:hover {
+  color: var(--color-cyan);
+}
+
+/* Card excerpt */
+.card__excerpt {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-base);
+  flex: 1;
+  max-width: none;
+
+  /* Clamp to 3 lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Card footer: date + read time */
+.card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--text-xs);
+  color: var(--color-text-subtle);
+  font-family: var(--font-display);
+  letter-spacing: var(--tracking-wide);
+  margin-top: auto;
+}
+
+.card__date {
+  text-transform: uppercase;
+}
+
+.card__read-time {
+  color: var(--color-cyan);
+}
+
+
+/* ----------------------------------------------------------------
+   7. SKILLS HIGHLIGHT
+   Three-item grid below avatar in hero.
+   Icon + abbreviation + label per item.
+   ---------------------------------------------------------------- */
+
+.skills-highlight {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  width: 100%;
+  margin-top: var(--space-4);
+}
+
+.skills-highlight__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-3);
+  background-color: var(--color-bg-raised);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  text-align: center;
+  transition: border-color var(--transition-base),
+              background-color var(--transition-base);
+}
+
+.skills-highlight__item:hover {
+  border-color: var(--color-border-strong);
+  background-color: var(--color-bg-elevated);
+}
+
+.skills-highlight__icon {
+  color: var(--color-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+
+.skills-highlight__abbr {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--color-lavender);
+  letter-spacing: var(--tracking-wider);
+}
+
+.skills-highlight__label {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  line-height: var(--leading-snug);
+}
+
+
+/* ----------------------------------------------------------------
+   8. WHAKATAUKI
+   Full-width proverb block with centred Māori text
+   and English translation below.
+   ---------------------------------------------------------------- */
+
+.whakatauaki {
+  background-color: var(--color-bg-elevated);
+  border-block: 1px solid var(--color-border);
+  text-align: center;
+}
+
+.whakatauaki__figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.whakatauaki__quote {
+  border-left: none;
+  padding-left: 0;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: clamp(var(--text-xl), 3vw, var(--text-2xl));
+  font-weight: var(--weight-light);
+  color: var(--color-cyan);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-normal);
+  max-width: 30ch;
+}
+
+.whakatauaki__quote p {
+  max-width: none;
+  color: inherit;
+}
+
+.whakatauaki__translation {
+  font-size: var(--text-md);
+  color: var(--color-text-muted);
+  line-height: var(--leading-base);
+}
+
+.whakatauaki__translation p {
+  max-width: none;
+  color: inherit;
+}
+
+/* Decorative open-quote mark */
+.whakatauaki__figure::before {
+  content: '\201C';
+  font-size: 6rem;
+  font-family: var(--font-body);
+  color: var(--color-lavender);
+  opacity: 0.25;
+  line-height: 1;
+  display: block;
+  height: 0;
+  transform: translateY(var(--space-8));
+  pointer-events: none;
+  aria-hidden: true;
+}
+
+
+/* ----------------------------------------------------------------
+   9. PHILOSOPHY SECTION
+   Dark banner with centred text and CTA.
+   ---------------------------------------------------------------- */
+
+.philosophy {
+  background-color: var(--color-bg-raised);
+  border-block: 1px solid var(--color-border);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background decoration — subtle radial gradient */
+.philosophy::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(141, 89, 210, 0.12) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.philosophy__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+  max-width: var(--container-narrow);
+  margin-inline: auto;
+}
+
+.philosophy__title {
+  font-size: clamp(var(--text-2xl), 4vw, var(--text-3xl));
+  color: var(--color-smoke);
+}
+
+.philosophy__body {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  line-height: var(--leading-loose);
+  text-align: center;
+  max-width: 55ch;
+}
+
+
+/* ----------------------------------------------------------------
+   10. SITE FOOTER
+   Four areas: brand, nav, social, legal.
+   ---------------------------------------------------------------- */
+
+.site-footer {
+  background-color: var(--color-bg-raised);
+  border-top: 1px solid var(--color-border);
+  padding-block: var(--space-12) var(--space-8);
+}
+
+.site-footer__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+@media (min-width: 500px) {
+  .site-footer__inner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 800px) {
+  .site-footer__inner {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    align-items: start;
+  }
+}
+
+/* Brand */
+.site-footer__name {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  color: var(--color-smoke);
+  letter-spacing: var(--tracking-wide);
+  max-width: none;
+  margin-bottom: var(--space-2);
+}
+
+.site-footer__statement {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  max-width: 32ch;
+}
+
+/* Footer nav */
+.site-footer__nav ul,
+.site-footer__social ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.site-footer__nav a,
+.site-footer__nav button {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  font-family: var(--font-body);
+}
+
+.site-footer__nav a:hover,
+.site-footer__nav button:hover {
+  color: var(--color-cyan);
+}
+
+/* Social icons */
+.site-footer__social ul {
+  flex-direction: row;
+  gap: var(--space-4);
+}
+
+.site-footer__social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-muted);
+  transition: color var(--transition-fast),
+              border-color var(--transition-fast),
+              background-color var(--transition-fast);
+}
+
+.site-footer__social a:hover {
+  color: var(--color-cyan);
+  border-color: var(--color-border-strong);
+  background-color: var(--color-cyan-dim);
+}
+
+.social-icon {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Back to top */
+.site-footer__back-top {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  font-family: var(--font-display);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  align-self: end;
+}
+
+.site-footer__back-top:hover {
+  color: var(--color-cyan);
+}
+
+/* Legal / copyright row */
+.site-footer__legal {
+  grid-column: 1 / -1;
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+@media (min-width: 500px) {
+  .site-footer__legal {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.site-footer__whakatauaki em {
+  color: var(--color-lavender);
+}
+
+
+/* ----------------------------------------------------------------
+   11. DECORATIVE: CIRCUIT-TRACE MOTIF
+   Pure CSS animated circuit lines — used as section decoration.
+   Applied via ::after pseudo on sections that call for it.
+   Respects prefers-reduced-motion (handled in base.css).
+   ---------------------------------------------------------------- */
+
+@keyframes trace-flow {
+  0%   { stroke-dashoffset: 1000; opacity: 0; }
+  20%  { opacity: 0.6; }
+  80%  { opacity: 0.6; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+/* Glowing dot pulse used on skills/hero */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 4px var(--color-cyan),
+                0 0 8px var(--color-cyan);
+    opacity: 0.6;
+  }
+  50% {
+    box-shadow: 0 0 8px var(--color-cyan),
+                0 0 20px var(--color-cyan),
+                0 0 40px rgba(72, 246, 248, 0.3);
+    opacity: 1;
+  }
+}
+
+/* Scan line — used on hero avatar frame */
+@keyframes scan {
+  0%   { top: -2px; }
+  100% { top: calc(100% + 2px); }
+}
