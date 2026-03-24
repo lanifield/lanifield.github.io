@@ -1,5 +1,5 @@
 /**
- * cookie-consent.js — Lani Raukawa Field · lanifield.nz
+ * cookie-consent.js — Lani Raukawa Field · lani.nz
  *
  * Manages cookie/analytics consent in two tiers:
  *   - Necessary only (default / decline)
